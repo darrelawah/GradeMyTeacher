@@ -27,6 +27,11 @@ export default function Home() {
           </a>
         </div>
       </div>
+      <div>
+        <p>
+        GradeMyTeacher
+        </p>
+      </div>
 
       <div className={styles.center}>
         <Image
