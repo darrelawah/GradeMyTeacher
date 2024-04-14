@@ -8,6 +8,7 @@ export default function Home() {
       <div>
         <p>
         Welcome!
+        Soon to be changed from the nextjs default!
         </p>
       </div>
       </div>
