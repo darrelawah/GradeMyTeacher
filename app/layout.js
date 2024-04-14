@@ -3,6 +3,7 @@ import "./globals.css";
 
 //components
 import Navbar from "./components/Navbar";
+import FooterBar from "./components/FooterBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           GradeMyTeacher
         </h1>
       {children}
+      <FooterBar/>
       </body>
     </html>
   );
