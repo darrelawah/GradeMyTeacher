@@ -9,6 +9,8 @@ export default function Home() {
         <p>
         Welcome!
         Soon to be changed from the nextjs default!
+
+        Test
         </p>
       </div>
       </div>
