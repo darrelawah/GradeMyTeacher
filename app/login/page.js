@@ -1,20 +1,3 @@
-// import React from 'react'
-//import styles from "../page.module.css";
-
-// export default function Login() {
-//   return (
-//     <main className={styles.main}>
-//         <div className={styles.description}>
-//             <div>
-//                 <p>Login</p>
-//                 <p>Test</p>
-//             </div>
-//         </div>
-//     </main>
-//   )
-// }
-// pages/login.js
-
 import styles from "../page.module.css";
 import React from 'react';
 import Link from 'next/link';
