@@ -25,6 +25,11 @@ export default function Navbar() {
             Profile
           </Link>
         </li>
+        <li style={{ marginLeft: '10px' }}>
+          <Link href="/about">
+            About Us
+          </Link>
+        </li>
       </ul>
     </nav>
   )
