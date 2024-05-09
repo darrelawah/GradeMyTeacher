@@ -23,9 +23,6 @@ export default function RootLayout({ children }) {
           </h1>
         </div>
         <div>
-          <h3>
-            WIP
-          </h3>
         </div>
       {children}
       <FooterBar/>
