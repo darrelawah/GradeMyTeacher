@@ -33,6 +33,31 @@ const AboutUsPage = () => {
                 <p style={styles.memberInfo}>Role: Developer</p>
                 <p style={styles.memberInfo}>Experience Level: COSC484</p>
               </div>
+
+              <div style={styles.teamMember}>
+                <h3 style={styles.memberName}>Name </h3>
+                <p style={styles.memberInfo}>Role: Developer</p>
+                <p style={styles.memberInfo}>Experience Level: COSC484</p>
+              </div>
+             
+              <div style={styles.teamMember}>
+                <h3 style={styles.memberName}>Name</h3>
+                <p style={styles.memberInfo}>Role: Developer</p>
+                <p style={styles.memberInfo}>Experience Level: COSC484</p>
+              </div>
+              
+              <div style={styles.teamMember}>
+                <h3 style={styles.memberName}>Name</h3>
+                <p style={styles.memberInfo}>Role: Developer</p>
+                <p style={styles.memberInfo}>Experience Level: COSC484</p>
+              </div>
+
+              <div style={styles.teamMember}>
+                <h3 style={styles.memberName}>Name</h3>
+                <p style={styles.memberInfo}>Role: Developer</p>
+                <p style={styles.memberInfo}>Experience Level: COSC484</p>
+              </div>
+              
             </div>
           </div>
         </div>

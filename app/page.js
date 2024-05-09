@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'; 
 
 const HomePage = () => {
   return (
@@ -12,7 +13,23 @@ const HomePage = () => {
             <p style={styles.subheading}>Discover amazing features, Get quality ratings to help make informed decisions, and more!</p>
             <p style={styles.info}>some info here or something</p>
             <p style={styles.info}>some infor here or something</p>
-            <p style={styles.info}>IDK maybe we have more info? who knows</p>
+            <p style={styles.info}>IDK maybe we have more info? who knows</p> 
+            
+            {/* adding the text "New Grade" */}
+            <p style={styles.newGradeText}>New Grade</p>
+            
+            {/* adding the buttons for professor, course, and university */}
+            <div style={styles.buttonContainer}>
+              <Link href="/rating/professor">
+                <button style={styles.button}>Professor</button>
+              </Link>
+              <Link href="/rating/course">
+                <button style={styles.button}>Course</button>
+              </Link>
+              <Link href="/rating/university">
+                <button style={styles.button}>University</button>
+              </Link>
+            </div>
           </div>
           {/* makes sure the picture is formatted properly*/} 
           <div style={styles.imageContainer}>
@@ -85,6 +102,32 @@ const styles = {
     fontSize: '1.2em',
     lineHeight: '1.6',
   },
+
+  //css for the "New Grade" text
+  newGradeText: {
+    fontSize: '1.5em',
+    marginBottom: '20px',
+    color: '#7289DA',
+    marginTop: '20px', // Add margin-top to create a line break
+  },
+
+  //css for the container of buttons
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+
+  //css for the buttons
+  button: {
+    backgroundColor: '#7289DA',
+    color: '#FFFFFF',
+    padding: '12px 16px',
+    fontSize: '1.2em',
+    border: 'none',
+    cursor: 'pointer',
+    marginRight: '10px', // Adjust spacing between buttons
+  },
+
 };
 
 export default HomePage;
