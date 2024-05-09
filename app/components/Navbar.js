@@ -15,11 +15,6 @@ export default function Navbar() {
                     Login
                 </Link>
             </li>
-            <li>
-                <Link href="/search">
-                    ClassSearch
-                </Link>
-            </li>
         </ul>
     </nav>
   )
