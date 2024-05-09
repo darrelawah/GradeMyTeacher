@@ -27,7 +27,11 @@ const UniversityRatingPage = () => {
             </button>
           ))}
         </div>
+        
+        {/* will take you to the university graded page after you submit*/}
+        <Link href='/graded/university'>
         <button className={styles.button} type="submit">Submit University Grade</button> {/* Apply button class */}
+        </Link>
       </form>
     </div>
   );

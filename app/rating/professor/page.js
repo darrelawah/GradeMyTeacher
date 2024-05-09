@@ -27,7 +27,11 @@ const ProfessorRatingPage = () => {
             </button>
           ))}
         </div>
+
+        {/* will take you to the graded professor page on submit*/}
+        <Link href='/graded/professor'>
         <button className={styles.button} type="submit">Submit Professor Grade</button>
+        </Link>
       </form>
     </div>
   );

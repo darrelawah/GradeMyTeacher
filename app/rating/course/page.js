@@ -32,7 +32,10 @@ const CourseRatingPage = () => {
             </button>
           ))}
         </div>
+                {/* will take you to the graded class page once review is complete*/}
+                <Link href='/graded/class'>
                 <button className={styles.button} type="submit">Submit Course Grade</button> {/* Apply button class */}
+                </Link>
             </form>
         </div>
     );
