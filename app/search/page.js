@@ -1,88 +1,87 @@
 "use client";
 import React from 'react';
-import { supabase } from '@/backend/client';
-import { useEffect, useState } from 'react';
-import styles from "../page.module.css";
+//import { supabase } from '@/backend/client';
+import { useState } from 'react';
+import CDisplay from './display';
+import PDisplay from './display';
+
 
 export default function Search() {
-    const [universities, setUniversity] = useState('');
-    const [course, setCousre] = useState('');
-    const [professors, setProf] = useState([]);
-    //const [tag, setTag] = useState('');
+    const [university, setUniversity] = useState('');
+    const [searchType, setType] = useState('');
 
-    useEffect(() => {
-        getUniversities();
-    }, [])
-
-    async function getUniversities() {
-        try{
-            const { data: university, error } = await supabase
-                .from('university')
-                .select('universityName')
-                if (error) throw (error);
-                // if (data != null) {
-                    setUniversity(university);
-                //}
-        } catch (error) {
-            alert(error.message);
-        }
-    }
-
-    // useEffect(() => {
-    //     getProf();
-    // }, [])
-
-    // async function getProf() {
-    //     try{
-    //         const { data: professors, error } = await supabase
-    //         .from('professors')
-    //         .select('*')
-    //         if (error) throw (error);
-    //         if (data != null) {
-    //             setProf(data);
-    //         }
-    //     } catch (error) {
-    //         alert(error.message);
-    //     }
-    // }
+    const [course, setCourse] = useState('');
+    const [prof, setProf] = useState('');
 
     return (
         <div>
-
-            <p>{universities}</p>
+            <br/>
             <form>
-                {/* <label>Choose your university </label>
-                <select
-                    value={universities}
+                <label>Choose your university </label>
+                <input
+                    value={university}
                     required
                     onChange={e => setUniversity(e.target.value)}
-                >
-                    <option value="default">select an option</option>
-                    {universities ? universities.map((university) => {
-                        return (
-                            <option key={university} value={university}>{university}</option>
-                        );
-                    }) : null}
-                    
-                </select> */}
-                <br/>
-                <br/>
-                <label>Enter class name: </label>
-                <input 
-                    value={course}
-                    onChange={e => setCousre(e.target.value)}
                 />
+                <br/>
+                <br/>
+                <label>Search by: </label>
+                <input 
+                    type="radio"
+                    name="search"
+                    value="Course"
+                    onChange={e => setType(e.target.value)}
+                />
+                <label> Course </label>
+                <input 
+                    type="radio"
+                    name="search"
+                    value="Professor"
+                    onChange={e => setType(e.target.value)}
+                />
+                <label> Professor </label>
+                <br/>
+                <br/>
+                {searchType === "Course" ?
+                    <>
+                    <label>Enter class name: </label>
+                    <input 
+                        value={course}
+                        onChange={e => setCourse(e.target.value)}
+                    />
+                    <br/>
+                    <br/>
+                    <div>
+                        <CDisplay course={course} uni={university} />
+                    </div>
+                    </>
+                : <></>}
 
+                {searchType === "Professor" ?
+                    <>
+                    <label>Enter professor name: </label>
+                    <input 
+                        value={prof}
+                        onChange={e => setProf(e.target.value)}
+                    />
+                    <br/>
+                    <br/>
+                    <div>
+                        <PDisplay prof={prof} uni={university} />
+                    </div>
+                    </>
+                : <></>}
             </form>
-            <br/>
-            <br/>
-            <h2>{course}</h2>
-            <br/>
-            <br/>
-            <div className='professors'>
 
-            </div>
+             {/* <br/>
+             <br/>
+             <h2>{course}</h2> <br/><br/>
+             <h3>{university}</h3>
+             <br/>
+             <br/>
+             <div>
+                <Display course={course} uni={university} />
+             </div> */}
         </div>
-        // <p>please something work</p>
     )
 }
