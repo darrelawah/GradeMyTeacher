@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const GradedUniversityPage = () => {
-    // Dummy data for now. We will pull this data from the backend. 
+    // Dummy data for now. We will pull this data from the database. 
     const gradedUniversity = {
         universityName: 'Example University',
         averageRating: 'B', 
@@ -20,6 +20,7 @@ const GradedUniversityPage = () => {
             <h2 style={styles.subHeading}>Average Rating: {gradedUniversity.averageRating}</h2>
             <div style={styles.reviews}>
                 <h2 style={styles.subHeading}>Reviews:</h2>
+                {/* Function to pull data from database (is just an array for now)) */}
                 {gradedUniversity.reviews.map((review, index) => (
                     <div key={index} style={styles.review}>
                         <h3>{review.username}</h3>
