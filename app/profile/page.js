@@ -29,9 +29,9 @@ const ProfilePage = () => {
             <h3 style={styles.largeBottomMargin}>Recent grades you have gotten/given: </h3>
             <ul style={styles.list}>
               {/* grading/rating information (will have to pull it from database)*/}
-              <li style={styles.listItem}><strong>Graded Teacher1:</strong> "Teacher Link" (or classes graded if professor)</li>
-              <li style={styles.listItem}><strong>Graded Teacher2:</strong> "Teacher Link" (or classes graded if professor)</li>
-              <li style={styles.listItem}><strong>Graded Teacher3:</strong> "Teacher Link" (or classes graded if professor)</li>
+              <li style={styles.listItem}><strong>Graded Teacher1:</strong> Teacher Link (or classes graded if professor)</li>
+              <li style={styles.listItem}><strong>Graded Teacher2:</strong> Teacher Link (or classes graded if professor)</li>
+              <li style={styles.listItem}><strong>Graded Teacher3:</strong> Teacher Link (or classes graded if professor)</li>
             </ul>
           </div>
         </div>
