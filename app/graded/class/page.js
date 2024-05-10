@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 const GradedClassPage = () => {
-    // Dummy data for now. We will pull this data from the backend. 
+
+    // Dummy data for now. We will pull this data from the database. 
     const gradedClass = {
         courseName: 'Mathematics 101',
         university: 'Example University',
@@ -10,7 +11,7 @@ const GradedClassPage = () => {
         reviews: [
             { username: 'User1', rating: 'A', comment: 'Some Comment' },
             { username: 'User2', rating: 'B', comment: 'Some Comment' },
-            { username: 'User3', rating: 'A', comment: 'Some Comment' }
+            { username: 'User3', rating: 'A', comment: 'Some Comment' },
         ]
     };
     
@@ -22,6 +23,7 @@ const GradedClassPage = () => {
             <h2 style={styles.subHeading}>Grade: {gradedClass.grade}</h2>
             <div style={styles.reviews}>
                 <h2 style={styles.subHeading}>Reviews:</h2>
+                {/* function to call information from array*/}
                 {gradedClass.reviews.map((review, index) => (
                     <div key={index} style={styles.review}>
                         <h3>{review.username}</h3>
@@ -38,6 +40,7 @@ const GradedClassPage = () => {
         </div>
     );
 };
+
 
 // CSS styles
 const styles = {
