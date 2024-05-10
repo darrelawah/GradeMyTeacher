@@ -3,32 +3,118 @@ import Link from 'next/link';
 
 const LoginPage = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 96px)', marginTop: '-1in' }}>
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={{ fontSize: '2em', marginBottom: '30px' }}>Login Page</h1>
-        <form style={{ width: '400px', textAlign: 'center', marginBottom: '20px' }}>
-          <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="username" style={{ fontSize: '1.2em' }}>Username:</label>
-            <input type="text" id="username" name="username" required />
+    //container makes sure formatting works as expected
+    <div style={styles.container}>
+      <div style={styles.formContainer}>
+        <h1 style={styles.heading}>Login Page</h1>
+        <form style={styles.form}>
+          {/* username input */}
+          <div style={styles.inputGroup}>
+            <label htmlFor="username" style={styles.label}>Username:</label>
+            <input type="text" id="username" name="username" required aria-label="Username" style={styles.input} />
           </div>
-          <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="password" style={{ fontSize: '1.2em' }}>Password:</label>
-            <input type="password" id="password" name="password" required />
+          {/* password input */}
+          <div style={styles.inputGroup}>
+            <label htmlFor="password" style={styles.label}>Password:</label>
+            <input type="password" id="password" name="password" required aria-label="Password" style={styles.input} />
           </div>
-          <button type="submit" style={{ fontSize: '1.2em', padding: '10px 20px', borderRadius: '5px' }}>Login</button>
-        </form>
-        <p style={{ fontSize: '1.2em', marginBottom: '20px' }}>
-          Don't have an account?{' '}
-          <Link href="/signup">
-            Sign up
+          {/* submit button (will take you to profile on submit) */}
+          <Link href='/profile'>
+            <button type="submit" style={styles.button}>Login</button>
           </Link>
+        {/* takes you to signup page if you need an account */}
+        </form>
+        <p style={styles.signupLink}>
+          Need an Account? {" "}
+          <Link href="/signup" style={styles.link}>Sign Up</Link>
         </p>
       </div>
     </div>
   );
 };
 
+const styles = {
+  //css for the outside area around the login page box
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 'calc(100vh - 96px)',
+    marginTop: '-1in',
+    background: '#202124',
+  },
+
+  //css for the box that contains the login page and its fields
+  formContainer: {
+    textAlign: 'center',
+    background: '#2C2F33',
+    padding: '40px',
+    borderRadius: '8px',
+    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)',
+  },
+
+  //css for heading (login page)
+  heading: {
+    fontSize: '2em',
+    marginBottom: '30px',
+    color: '#FFFFFF',
+  },
+
+  //css for the form
+  form: {
+    width: '400px',
+    textAlign: 'center',
+    marginBottom: '20px',
+  },
+
+  //css for the input areas 
+  inputGroup: {
+    marginBottom: '20px',
+  },
+
+  //css for User/Pass Labels
+  label: {
+    fontSize: '1.2em',
+    display: 'block',
+    marginBottom: '5px',
+    color: '#FFFFFF',
+  },
+
+  //css for the input text boxes
+  input: {
+    width: '100%',
+    padding: '10px',
+    fontSize: '1em',
+    borderRadius: '4px',
+    border: '1px solid #8E9297',
+    background: '#40444B',
+    color: '#FFFFFF',
+    boxSizing: 'border-box',
+  },
+
+  //css for button
+  button: {
+    fontSize: '1.2em',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    backgroundColor: '#7289DA',
+    color: '#FFFFFF',
+    border: 'none',
+    cursor: 'pointer',
+  },
+
+  //css for "Need an Account"
+  signupLink: {
+    fontSize: '1.2em',
+    marginBottom: '20px',
+    color: '#FFFFFF',
+  },
+
+  //css for "sign up link"
+  link: {
+    textDecoration: 'underline',
+    color: '#7289DA',
+  },
+};
+
 export default LoginPage;
-
-
-
