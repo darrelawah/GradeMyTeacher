@@ -1,9 +1,9 @@
-//"use client";
+"use client";
 import React from 'react';
 import Link from 'next/link';
 import styles from "../../rating/rating.module.css";
 // import { supabase } from "@/backend/client";
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const ProfessorRatingPage = () => {
   const [prof, setProf] = useState('');
