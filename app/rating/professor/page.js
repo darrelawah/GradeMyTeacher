@@ -52,7 +52,7 @@ const ProfessorRatingPage = () => {
     <div className={styles.container}>
       <form className={styles.form}>
         <h1 className={styles.title}>Professor Grade</h1>
-        <div className={styles.formGroup}>
+        <div className={styles.inputGroup}>
 
           <label className={styles.label}>Professor Name:</label>
           <input 
@@ -62,7 +62,13 @@ const ProfessorRatingPage = () => {
           />
 
         </div>
-        <div className={styles.formGroup}>
+
+        <div className={styles.inputGroup}> {/* Apply inputGroup class */}
+          <label className={styles.label}>Course Name:</label> {/* Apply label class */}
+          <input className={styles.input} type="text" name="courseName" required /> {/* Apply input class */}
+        </div>
+
+        <div className={styles.inputGroup}>
 
           <label className={styles.label}>Review:</label>
           <textarea 

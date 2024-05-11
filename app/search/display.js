@@ -91,7 +91,19 @@ function Professors(props) {
     return (
         <div>
             <br></br>
-            <p><Link href="/graded/professor" rel="noopener noreferrer" target="_blank">Professor: {name}</Link></p>
+            <p>
+                <Link href={{
+                    pathname: "/graded/professor",
+                    query: {
+                        uni: props.uni,
+                        pid: pid,
+                        pname: name,
+                        grade: grade
+                    }
+                }}
+                rel="noopener noreferrer" target="_blank"
+                >Professor: {name}</Link>
+            </p>
             <p>Grade: {grade}</p>
             <br></br>
         </div>
@@ -121,7 +133,7 @@ export default function Display(props) {
             <br></br>
             <div>
                 {courses.map(c => (
-                    <Professors pid={c.pid} />
+                    <Professors pid={c.pid} uni={university}/>
                 ))}
             </div>
         </>
@@ -130,7 +142,7 @@ export default function Display(props) {
         { props.course == null ?
         <>
             <div>
-            <Professors pname={props.prof} /> 
+            <Professors pname={props.prof} uni={university}/> 
             </div>
         </>
         : <></>}

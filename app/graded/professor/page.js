@@ -1,8 +1,12 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { supabase } from "@/backend/client";
+import { useEffect, useState } from "react";
+import { useSearchParams } from 'next/navigation';
 
 const GradedProfessorPage = () => {
-    // Dummy data for now. We will pull this data from the backend. 
+    // Dummy data for now. We will pull this data from the backend.
     const gradedProfessor = {
         professorName: 'Dr. John Smith',
         university: 'Example University',
