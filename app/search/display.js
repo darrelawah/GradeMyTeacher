@@ -80,11 +80,13 @@ function Professors(props) {
 
     var name
     var grade
+    var profid
 
     profarr.forEach(element => {
         if (element.pid === pid || element.name === pname) {
             name = element.name;
             grade = element.rating;
+            profid = element.pid;
         }
     });
 
@@ -96,7 +98,7 @@ function Professors(props) {
                     pathname: "/graded/professor",
                     query: {
                         uni: props.uni,
-                        pid: pid,
+                        pid: profid,
                         pname: name,
                         grade: grade
                     }
