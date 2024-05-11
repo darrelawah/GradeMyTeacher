@@ -35,7 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#ds store exclusion
 .DS_Store
 ._.DS_Store
 **/.DS_Store

@@ -37,6 +37,7 @@ const GradedProfessorPage = () => {
     const searchParams = useSearchParams();
     const reviewarr = getReviews(searchParams.get("pid"));
     
+    // Dummy data for now. We will pull this data from the database. 
     const gradedProfessor = {
         professorName: searchParams.get("pname"),
         university: searchParams.get("uni"),
@@ -51,6 +52,7 @@ const GradedProfessorPage = () => {
             <h2 style={styles.subHeading}>Average Rating: {gradedProfessor.averageRating}</h2>
             <div style={styles.reviews}>
                 <h2 style={styles.subHeading}>Reviews:</h2>
+                {/* pulls professor information from the database (just an array for now) */}
                 {gradedProfessor.reviews.map((review, index) => (
                     <div key={index} style={styles.review}>
                         <h3>{review.classname}</h3>
