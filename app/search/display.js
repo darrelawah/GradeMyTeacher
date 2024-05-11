@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { supabase } from "@/backend/client";
 import { useEffect, useState } from "react";
 
@@ -27,27 +28,113 @@ function getUniversity(uni) {
     return uni;
 }
 
-export default function CDisplay(props) {
-    const course = props.course;
-    const uni = props.uni;
-
+function getCourses(course) {
     const [courses, setCourse] = useState([]);
 
-    const university = getUniversity(uni);
-    
+    useEffect(() => {
+        getClasses()
+    }, [])
+
+    async function getClasses(){
+        const { data: classes, error } = await supabase
+            .from('classes')
+            .select('classname, profid')
+
+        setCourse(classes)
+    }
+
+    var arr = []
+    courses.forEach(element => {
+        if (element.classname === course) {
+            course = element.classname;
+            var pid = element.profid;
+            arr.push({course, pid})
+        }
+    });
+
+    return arr;
+}
+
+function getProfs() {
+    const [profs, setProfs] = useState([]);
+
+    useEffect(() => {
+        getProfs()
+    }, [])
+
+    async function getProfs(){
+        const { data: professors, error } = await supabase
+            .from('professors')
+            .select('pid, name, rating')
+
+        setProfs(professors)
+    }
+
+    return profs;
+}
+
+function Professors(props) {
+    const pid = props.pid;
+    const pname = props.pname;
+    const profarr = getProfs();
+
+    var name
+    var grade
+
+    profarr.forEach(element => {
+        if (element.pid === pid || element.name === pname) {
+            name = element.name;
+            grade = element.rating;
+        }
+    });
+
     return (
-        <>
-        <h2>{university}</h2>
-        <br/>
-        <h1>{course}</h1>
-        <br/>
-        {/* <p>{JSON.stringify(university, null, 2)}</p> */}
-        <br></br>
         <div>
-            {/* {universities.map(u => (
-                <p>{u.universityName}</p>
-            ))} */}
+            <br></br>
+            <p><Link href="/graded/professor" rel="noopener noreferrer" target="_blank">Professor: {name}</Link></p>
+            <p>Grade: {grade}</p>
+            <br></br>
         </div>
+    )
+}
+
+export default function Display(props) {
+    const university = getUniversity(props.uni);
+
+    var courses
+    if (props.prof == null) {
+        courses = getCourses(props.course);
+    }
+    
+    return ( 
+        <>
+        <h2><Link href="/graded/university" rel="noopener noreferrer" target="_blank">{university}</Link></h2>
+        <br/>
+        { props.prof == null ?
+        <>
+            <div>
+                {courses.slice(0, 1).map(c => (
+                    <h1><Link href="/graded/class" rel="noopener noreferrer" target="_blank">{c.course}</Link></h1>
+                ))}   
+            </div>
+            <br/>
+            <br></br>
+            <div>
+                {courses.map(c => (
+                    <Professors pid={c.pid} />
+                ))}
+            </div>
+        </>
+        : <></>}
+
+        { props.course == null ?
+        <>
+            <div>
+            <Professors pname={props.prof} /> 
+            </div>
+        </>
+        : <></>}
+        
         </>
     )
 }

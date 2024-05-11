@@ -1,10 +1,7 @@
 "use client";
 import React from 'react';
-//import { supabase } from '@/backend/client';
-import { useState } from 'react';
-import CDisplay from './display';
-import PDisplay from './display';
-
+import { useState, useEffect } from 'react';
+import Display from './display';
 
 export default function Search() {
     const [university, setUniversity] = useState('');
@@ -52,7 +49,7 @@ export default function Search() {
                     <br/>
                     <br/>
                     <div>
-                        <CDisplay course={course} uni={university} />
+                        <Display course={course} uni={university} />
                     </div>
                     </>
                 : <></>}
@@ -67,21 +64,11 @@ export default function Search() {
                     <br/>
                     <br/>
                     <div>
-                        <PDisplay prof={prof} uni={university} />
+                        <Display prof={prof} uni={university} />
                     </div>
                     </>
                 : <></>}
             </form>
-
-             {/* <br/>
-             <br/>
-             <h2>{course}</h2> <br/><br/>
-             <h3>{university}</h3>
-             <br/>
-             <br/>
-             <div>
-                <Display course={course} uni={university} />
-             </div> */}
         </div>
     )
 }
