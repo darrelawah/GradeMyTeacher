@@ -37,7 +37,6 @@ const GradedProfessorPage = () => {
     const searchParams = useSearchParams();
     const reviewarr = getReviews(searchParams.get("pid"));
     
-    // Dummy data for now. We will pull this data from the database. 
     const gradedProfessor = {
         professorName: searchParams.get("pname"),
         university: searchParams.get("uni"),

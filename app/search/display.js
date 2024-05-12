@@ -14,18 +14,21 @@ function getUniversity(uni) {
     async function getUnis(){
         const { data: university, error } = await supabase
             .from('university')
-            .select('universityName')
+            .select('universityName, rating')
 
         setUniversity(university)
     }
 
+    var arr = []
     universities.forEach(element => {
         if (element.universityName === uni) {
             uni = element.universityName;
+            var grade = element.rating;
+            arr.push({uni, grade})
         }
     });
 
-    return uni;
+    return arr;
 }
 
 function getCourses(course) {
@@ -114,7 +117,13 @@ function Professors(props) {
 }
 
 export default function Display(props) {
-    const university = getUniversity(props.uni);
+    const universities = getUniversity(props.uni);
+    var university
+    var grade
+    universities.forEach(element => {
+        university = element.uni
+        grade = element.grade
+    });
 
     var courses
     if (props.prof == null) {
@@ -123,7 +132,17 @@ export default function Display(props) {
     
     return ( 
         <>
-        <h2><Link href="/graded/university" rel="noopener noreferrer" target="_blank">{university}</Link></h2>
+        <h2>
+            <Link href={{
+                pathname: "/graded/university",
+                query: {
+                    uname: university,
+                    grade: grade
+                }
+            }} 
+            rel="noopener noreferrer" target="_blank"
+            >{university}</Link>
+        </h2>
         <br/>
         { props.prof == null ?
         <>
