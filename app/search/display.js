@@ -4,7 +4,7 @@ import Link from "next/link";
 import { supabase } from "@/backend/client";
 import { useEffect, useState } from "react";
 
-function getUniversity(uni) {
+function useGetUniversity(uni) {
     const [universities, setUniversity] = useState([]);
 
     useEffect(() => {
@@ -31,21 +31,17 @@ function getUniversity(uni) {
     return arr;
 }
 
-function getCourses(course) {
+function useGetCourses(course) {
     const [courses, setCourse] = useState([]);
-
     useEffect(() => {
         getClasses()
     }, [])
-
     async function getClasses(){
         const { data: classes, error } = await supabase
             .from('classes')
             .select('classname, profid, rating')
-
         setCourse(classes)
     }
-
     var arr = []
     courses.forEach(element => {
         if (element.classname === course) {
@@ -55,32 +51,27 @@ function getCourses(course) {
             arr.push({course, pid, grade})
         }
     });
-
     return arr;
 }
 
-function getProfs() {
+function useGetProfessors() {
     const [profs, setProfs] = useState([]);
-
     useEffect(() => {
         getProfs()
     }, [])
-
     async function getProfs(){
         const { data: professors, error } = await supabase
             .from('professors')
             .select('pid, name, rating')
-
         setProfs(professors)
     }
-
     return profs;
 }
 
 function Professors(props) {
     const pid = props.pid;
     const pname = props.pname;
-    const profarr = getProfs();
+    const profarr = useGetProfessors();
 
     var name
     var grade
@@ -117,18 +108,24 @@ function Professors(props) {
 }
 
 export default function Display(props) {
-    const universities = getUniversity(props.uni);
+    const universities = useGetUniversity(props.uni);
+    const courses = useGetCourses(props.course);
     var university
     var grade
+
+    if (!university) {
+        return <div>Loading...</div>; // Add loading state if university data is not available yet
+    }
+
     universities.forEach(element => {
         university = element.uni
         grade = element.grade
     });
 
-    var courses
-    if (props.prof == null) {
-        courses = getCourses(props.course);
-    }
+    // var courses
+    // if (props.prof == null) {
+    //     courses = useGetCourses(props.course);
+    // }
     
     return ( 
         <>
@@ -147,8 +144,8 @@ export default function Display(props) {
         { props.prof == null ?
         <>
             <div>
-                {courses.slice(0, 1).map(c => (
-                    <h1>
+                {courses.slice(0, 1).map((c, index) => (
+                    <h1 key={index}>
                         <Link href={{
                             pathname: "/graded/class",
                             query: {
@@ -166,11 +163,13 @@ export default function Display(props) {
             <br></br>
             <div>
                 {courses.map(c => (
-                    <Professors pid={c.pid} uni={university}/>
+                    <Professors key={c.pid} pid={c.pid} uni={university}/>
                 ))}
             </div>
         </>
-        : <></>}
+        :
+        <>
+        </>}
 
         { props.course == null ?
         <>

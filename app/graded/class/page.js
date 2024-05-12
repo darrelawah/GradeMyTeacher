@@ -2,10 +2,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { supabase } from "@/backend/client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
-function getReviews(cname) {
+function useGetReviews(cname) {
     const [review, setReviews] = useState([]);
 
     useEffect(() => {
@@ -33,9 +33,9 @@ function getReviews(cname) {
     return arr;
 }
 
-const GradedClassPage = () => {
+const GradedClassPageContent = () => {
     const searchParams = useSearchParams();
-    const reviewarr = getReviews(searchParams.get("cname"));
+    const reviewarr = useGetReviews(searchParams.get("cname"));
 
     const gradedClass = {
         courseName: searchParams.get("cname"),
@@ -67,6 +67,14 @@ const GradedClassPage = () => {
         </div>
     );
 };
+
+const GradedClassPage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GradedClassPageContent />
+        </Suspense>
+    )
+}
 
 // CSS styles
 const styles = {
