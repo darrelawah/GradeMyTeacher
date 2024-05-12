@@ -14,18 +14,21 @@ function getUniversity(uni) {
     async function getUnis(){
         const { data: university, error } = await supabase
             .from('university')
-            .select('universityName')
+            .select('universityName, rating')
 
         setUniversity(university)
     }
 
+    var arr = []
     universities.forEach(element => {
         if (element.universityName === uni) {
             uni = element.universityName;
+            var grade = element.rating;
+            arr.push({uni, grade})
         }
     });
 
-    return uni;
+    return arr;
 }
 
 function getCourses(course) {
@@ -38,7 +41,7 @@ function getCourses(course) {
     async function getClasses(){
         const { data: classes, error } = await supabase
             .from('classes')
-            .select('classname, profid')
+            .select('classname, profid, rating')
 
         setCourse(classes)
     }
@@ -48,7 +51,8 @@ function getCourses(course) {
         if (element.classname === course) {
             course = element.classname;
             var pid = element.profid;
-            arr.push({course, pid})
+            var grade = element.rating;
+            arr.push({course, pid, grade})
         }
     });
 
@@ -113,7 +117,13 @@ function Professors(props) {
 }
 
 export default function Display(props) {
-    const university = getUniversity(props.uni);
+    const universities = getUniversity(props.uni);
+    var university
+    var grade
+    universities.forEach(element => {
+        university = element.uni
+        grade = element.grade
+    });
 
     var courses
     if (props.prof == null) {
@@ -122,13 +132,34 @@ export default function Display(props) {
     
     return ( 
         <>
-        <h2><Link href="/graded/university" rel="noopener noreferrer" target="_blank">{university}</Link></h2>
+        <h2>
+            <Link href={{
+                pathname: "/graded/university",
+                query: {
+                    uname: university,
+                    grade: grade
+                }
+            }} 
+            rel="noopener noreferrer" target="_blank"
+            >{university}</Link>
+        </h2>
         <br/>
         { props.prof == null ?
         <>
             <div>
                 {courses.slice(0, 1).map(c => (
-                    <h1><Link href="/graded/class" rel="noopener noreferrer" target="_blank">{c.course}</Link></h1>
+                    <h1>
+                        <Link href={{
+                            pathname: "/graded/class",
+                            query: {
+                                uni: university,
+                                cname: c.course,
+                                grade: c.grade
+                            }
+                        }} 
+                        rel="noopener noreferrer" target="_blank"
+                        >{c.course}</Link>
+                    </h1>
                 ))}   
             </div>
             <br/>

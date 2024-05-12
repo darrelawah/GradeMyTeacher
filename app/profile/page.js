@@ -1,4 +1,33 @@
 import React from 'react';
+import Link from 'next/link';
+
+// dummy arrays to simulate database
+const users = [
+  {
+    username: 'JohnDoe',
+    email: 'johndoe@example.com',
+    role: 'Student/Teacher',
+    school: 'School Attending'
+  },
+];
+
+const recentGrades = [
+  {
+    teacher: 'Teacher1',
+    grade: 'grade',
+    comment: 'comment',
+  },
+  {
+    teacher: 'Teacher2',
+    grade: 'grade',
+    comment: 'comment',
+  },
+  {
+    teacher: 'Teacher3',
+    grade: 'grade',
+    comment: 'comment',
+  }
+];
 
 const ProfilePage = () => {
   return (
@@ -12,11 +41,15 @@ const ProfilePage = () => {
             <div style={styles.userInfo}>
               <h4 style={styles.subHeading}>User Information</h4>
               <ul style={styles.list}>
-                {/* user information (will have to pull it from database)*/}
-                <li style={styles.listItem}><strong>Username:</strong> JohnDoe</li>
-                <li style={styles.listItem}><strong>Email:</strong> johndoe@example.com</li>
-                <li style={styles.listItem}><strong>Role:</strong> Student/Teacher</li>
-                <li style={styles.listItem}><strong>School:</strong> School Attending</li>
+                {/* user information (will have to pull it from database rather than array)*/}
+                {users.map((user, index) => (
+                  <li key={index} style={styles.listItem}>
+                    <strong>Username:</strong> {user.username}<br />
+                    <strong>Email:</strong> {user.email}<br />
+                    <strong>Role:</strong> {user.role}<br />
+                    <strong>School:</strong> {user.school}
+                  </li>
+                  ))}
               </ul>
             </div>
           </div>
@@ -28,10 +61,12 @@ const ProfilePage = () => {
           <div style={styles.content}>
             <h3 style={styles.largeBottomMargin}>Recent grades you have gotten/given: </h3>
             <ul style={styles.list}>
-              {/* grading/rating information (will have to pull it from database)*/}
-              <li style={styles.listItem}><strong>Graded Teacher1:</strong> "Teacher Link" (or classes graded if professor)</li>
-              <li style={styles.listItem}><strong>Graded Teacher2:</strong> "Teacher Link" (or classes graded if professor)</li>
-              <li style={styles.listItem}><strong>Graded Teacher3:</strong> "Teacher Link" (or classes graded if professor)</li>
+              {/* grading/rating information (will have to pull it from database rather than from array)*/}
+              {recentGrades.map((grade, index) => (
+                <li key={index} style={styles.listItem}>
+                  <strong>Graded {grade.teacher}:</strong> <strong>{grade.grade}</strong>, { grade.comment}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

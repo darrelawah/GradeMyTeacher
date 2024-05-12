@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync": "aws s3 --profile 'allansmac' --region 'us-east-2' sync ./.next 's3://grademyteachermain/'",
+    "invalidate": "aws cloudfront --profile 'allansmac' create-invalidation --distribution-id E3Q4CNVBLSZCO6 --paths '/*'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",

@@ -1,16 +1,46 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { supabase } from "@/backend/client";
+import { useEffect, useState } from "react";
+import { useSearchParams } from 'next/navigation';
+
+function getReviews(uname) {
+    const [review, setReviews] = useState([]);
+
+    useEffect(() => {
+        getRev()
+    }, [])
+
+    async function getRev(){
+        const { data: unireviews, error } = await supabase
+            .from('unireviews')
+            .select('uname, rating, reviewtext')
+
+        setReviews(unireviews)
+    }
+
+    var arr = []
+    review.forEach(element => {
+        if (element.uname == uname) {
+            var rating = element.rating;
+            var comment = element.reviewtext;
+            arr.push({rating, comment})
+        }
+    });
+
+    return arr;
+}
 
 const GradedUniversityPage = () => {
+    const searchParams = useSearchParams();
+    const reviewarr = getReviews(searchParams.get("uname"));
+
     // Dummy data for now. We will pull this data from the backend. 
     const gradedUniversity = {
-        universityName: 'Example University',
-        averageRating: 'B', 
-        reviews: [
-            { username: 'User1', rating: "A", comment: 'Solid university! Would attend again!' },
-            { username: 'User2', rating: "B", comment: 'Not too shabby. Would almost recommend' },
-            { username: 'User3', rating: "C", comment: 'Mid campus. Dining hall food is bad.' }
-        ]
+        universityName: searchParams.get("uname"),
+        averageRating: searchParams.get("grade"), 
+        reviews: reviewarr
     };
 
     //may add more comments later. Kinda tired today (Sorry!).
@@ -22,7 +52,7 @@ const GradedUniversityPage = () => {
                 <h2 style={styles.subHeading}>Reviews:</h2>
                 {gradedUniversity.reviews.map((review, index) => (
                     <div key={index} style={styles.review}>
-                        <h3>{review.username}</h3>
+                        {/* <h3>{review.username}</h3> */}
                         <p><strong>Rating:</strong> {review.rating}</p>
                         <p><strong>Comment:</strong> {review.comment}</p>
                     </div>
