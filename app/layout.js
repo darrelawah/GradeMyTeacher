@@ -5,17 +5,17 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import FooterBar from "./components/FooterBar";
 
-const headerFontLB = Libre_Baskerville({ 
-  subsets: ["latin"],
-  weight: ['400'],
-  variable: '--font-libBask',
-});
+// const headerFontLB = Libre_Baskerville({ 
+//   subsets: ["latin"],
+//   weight: ['400'],
+//   variable: '--font-libBask',
+// });
 
-const bodyFontM = Montserrat({
-  subsets: ["latin"],
-  weight: ['400'],
-  variable: '--font-M',
-});
+// const bodyFontM = Montserrat({
+//   subsets: ["latin"],
+//   weight: ['400'],
+//   variable: '--font-M',
+// });
 
 export const metadata = {
   title: "Grade My Teacher",
@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${bodyFontM.className} ${headerFontLB.className}`}>
+      <body>
       <Navbar/>
         <div>
           <h1>
@@ -40,3 +40,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+//className={`${bodyFontM.className} ${headerFontLB.className}`}

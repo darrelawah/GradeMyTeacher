@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unkempt:wght@400;700&display=swap');
 :root {
 
+  --font-libBask: "Libre Baskerville", serif;
+  --font-M: "Montserrat", sans-serif;
+
   --gmtBeigh: #F3E3C2;
   --gmtOrange: #DC7101;
   --gmtBlue: #0072F4;
@@ -134,4 +137,10 @@ li {
 }
 .font-M{
   --font-M: "Montserrat", sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-libBask);
+}
+p {
+  font-family: var(--font-M);
 }

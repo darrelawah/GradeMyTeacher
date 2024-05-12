@@ -1,20 +1,44 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { supabase } from "@/backend/client";
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from 'next/navigation';
 
-const GradedProfessorPage = () => {
-    // Dummy data for now. We will pull this data from the database. 
+function useGetReviews(pid) {
+    const [review, setReviews] = useState([]);
+    useEffect(() => {
+        getRev()
+    }, [])
+    async function getRev(){
+        const { data: reviews, error } = await supabase
+            .from('reviews')
+            .select('profid, classname, rating, reviewtext')
+        setReviews(reviews)
+    }
+    var arr = []
+    review.forEach(element => {
+        if (element.profid == pid) {
+            var classname = element.classname;
+            var rating = element.rating;
+            var comment = element.reviewtext;
+            arr.push({classname, rating, comment})
+        }
+    });
+    return arr;
+}
+
+const GradedProfessorPageContent = () => {
+    const searchParams = useSearchParams();
+    const reviewarr = useGetReviews(searchParams.get("pid"));
+    
     const gradedProfessor = {
-        professorName: 'Dr. John Smith',
-        university: 'Example University',
-        averageRating: 'F',
-        reviews: [
-            { username: 'User1', rating: 'F', comment: 'Rude to students' },
-            { username: 'User2', rating: 'F', comment: 'Harsh Grader' },
-            { username: 'User3', rating: 'F', comment: 'Bad policies' }
-        ]
+        professorName: searchParams.get("pname"),
+        university: searchParams.get("uni"),
+        averageRating: searchParams.get("grade"),
+        reviews: reviewarr
     };
 
-    //may add more comments later. Kinda tired today (Sorry!).
     return (
         <div style={styles.container}>
             <h1 style={styles.heading}>{gradedProfessor.professorName}</h1>
@@ -25,7 +49,7 @@ const GradedProfessorPage = () => {
                 {/* pulls professor information from the database (just an array for now) */}
                 {gradedProfessor.reviews.map((review, index) => (
                     <div key={index} style={styles.review}>
-                        <h3>{review.username}</h3>
+                        <h3>{review.classname}</h3>
                         <p><strong>Rating:</strong> {review.rating}</p>
                         <p><strong>Comment:</strong> {review.comment}</p>
                     </div>
@@ -39,6 +63,16 @@ const GradedProfessorPage = () => {
         </div>
     );
 };
+
+const GradedProfessorPage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GradedProfessorPageContent />
+        </Suspense>
+    )
+}
+
+export default GradedProfessorPage;
 
 // CSS styles
 const styles = {
@@ -84,5 +118,3 @@ const styles = {
         transition: 'background-color 0.3s ease',
     },
 };
-
-export default GradedProfessorPage;
