@@ -6,22 +6,22 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation';
 
 function getReviews(pid) {
-    const [reviews, setReviews] = useState([]);
+    const [review, setReviews] = useState([]);
 
     useEffect(() => {
         getRev()
     }, [])
 
     async function getRev(){
-        const { data: profreviews, error } = await supabase
-            .from('profreviews')
+        const { data: reviews, error } = await supabase
+            .from('reviews')
             .select('profid, classname, rating, reviewtext')
 
-        setReviews(profreviews)
+        setReviews(reviews)
     }
 
     var arr = []
-    reviews.forEach(element => {
+    review.forEach(element => {
         if (element.profid == pid) {
             var classname = element.classname;
             var rating = element.rating;

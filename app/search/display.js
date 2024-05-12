@@ -38,7 +38,7 @@ function getCourses(course) {
     async function getClasses(){
         const { data: classes, error } = await supabase
             .from('classes')
-            .select('classname, profid')
+            .select('classname, profid, rating')
 
         setCourse(classes)
     }
@@ -48,7 +48,8 @@ function getCourses(course) {
         if (element.classname === course) {
             course = element.classname;
             var pid = element.profid;
-            arr.push({course, pid})
+            var grade = element.rating;
+            arr.push({course, pid, grade})
         }
     });
 
@@ -128,7 +129,18 @@ export default function Display(props) {
         <>
             <div>
                 {courses.slice(0, 1).map(c => (
-                    <h1><Link href="/graded/class" rel="noopener noreferrer" target="_blank">{c.course}</Link></h1>
+                    <h1>
+                        <Link href={{
+                            pathname: "/graded/class",
+                            query: {
+                                uni: university,
+                                cname: c.course,
+                                grade: c.grade
+                            }
+                        }} 
+                        rel="noopener noreferrer" target="_blank"
+                        >{c.course}</Link>
+                    </h1>
                 ))}   
             </div>
             <br/>
