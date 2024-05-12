@@ -2,24 +2,20 @@
 import React from 'react';
 import Link from 'next/link';
 import { supabase } from "@/backend/client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
-function getReviews(pid) {
+function useGetReviews(pid) {
     const [review, setReviews] = useState([]);
-
     useEffect(() => {
         getRev()
     }, [])
-
     async function getRev(){
         const { data: reviews, error } = await supabase
             .from('reviews')
             .select('profid, classname, rating, reviewtext')
-
         setReviews(reviews)
     }
-
     var arr = []
     review.forEach(element => {
         if (element.profid == pid) {
@@ -29,13 +25,12 @@ function getReviews(pid) {
             arr.push({classname, rating, comment})
         }
     });
-
     return arr;
 }
 
-const GradedProfessorPage = () => {
+const GradedProfessorPageContent = () => {
     const searchParams = useSearchParams();
-    const reviewarr = getReviews(searchParams.get("pid"));
+    const reviewarr = useGetReviews(searchParams.get("pid"));
     
     const gradedProfessor = {
         professorName: searchParams.get("pname"),
@@ -68,6 +63,16 @@ const GradedProfessorPage = () => {
         </div>
     );
 };
+
+const GradedProfessorPage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GradedProfessorPageContent />
+        </Suspense>
+    )
+}
+
+export default GradedProfessorPage;
 
 // CSS styles
 const styles = {
@@ -113,5 +118,3 @@ const styles = {
         transition: 'background-color 0.3s ease',
     },
 };
-
-export default GradedProfessorPage;

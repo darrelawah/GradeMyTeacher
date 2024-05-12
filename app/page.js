@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from 'next/link'; 
+import Link from 'next/link';
+import Image from 'next/image';
 
 const HomePage = () => {
   return (
@@ -33,7 +34,11 @@ const HomePage = () => {
           </div>
           {/* makes sure the picture is formatted properly*/} 
           <div style={styles.imageContainer}>
-            <img src="https://img.freepik.com/premium-vector/lineart-illustration-reading-book-black-background-also-suitable-logos_645919-119.jpg" alt="from freepik" style={styles.image} />
+            <Image
+              src="https://img.freepik.com/premium-vector/lineart-illustration-reading-book-black-background-also-suitable-logos_645919-119.jpg"
+              alt="from freepik"
+              style={styles.image}
+            />
           </div>
         </div>
       </main>
