@@ -88,7 +88,7 @@ function Professors(props) {
     return (
         <div>
             <br></br>
-            <p>
+            <p>Professor:
                 <Link href={{
                     pathname: "/graded/professor",
                     query: {
@@ -99,7 +99,7 @@ function Professors(props) {
                     }
                 }}
                 rel="noopener noreferrer" target="_blank"
-                >Professor: {name}</Link>
+                > {name}</Link>
             </p>
             <p>Grade: {grade}</p>
             <br></br>
