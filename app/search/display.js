@@ -113,9 +113,9 @@ export default function Display(props) {
     var university
     var grade
 
-    if (!university) {
-        return <div>Loading...</div>; // Add loading state if university data is not available yet
-    }
+    // if (!university) {
+    //     return <div>Loading...</div>; // Add loading state if university data is not available yet
+    // }
 
     universities.forEach(element => {
         university = element.uni

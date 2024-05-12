@@ -4,6 +4,15 @@
   --border-radius: 12px;
   --font-mono: "Libre Baskerville", serif;
   --font-text: "Montserrat", sans-serif;
+
+  --gmtBeigh: #F3E3C2;
+  --gmtOrange: #DC7101;
+  --gmtBlue: #0072F4;
+  --gmtDarkBlue: #050066;
+  --gmtLightGray: #DEDDEE;
+  --gmtDarkGray: #989DA7;
+  --gmtBlack: #000000;
+  --gmtWhite: #FFFFFF;
   
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
