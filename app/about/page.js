@@ -17,7 +17,7 @@ const AboutUsPage = () => {
             <div style={styles.teamMembers}>
               {/* These are our team members */}
               <div style={styles.teamMember}>
-                <h3 style={styles.memberName}>Darrel </h3>
+                <h3 style={styles.memberName}>Darrel</h3>
                 <p style={styles.memberInfo}>Role: Developer</p>
                 <p style={styles.memberInfo}>Experience Level: COSC484</p>
               </div>
@@ -35,29 +35,23 @@ const AboutUsPage = () => {
               </div>
 
               <div style={styles.teamMember}>
-                <h3 style={styles.memberName}>Name </h3>
+                <h3 style={styles.memberName}>Anukrati</h3>
                 <p style={styles.memberInfo}>Role: Developer</p>
                 <p style={styles.memberInfo}>Experience Level: COSC484</p>
               </div>
 
               <div style={styles.teamMember}>
-                <h3 style={styles.memberName}>Name</h3>
+                <h3 style={styles.memberName}>Allan</h3>
                 <p style={styles.memberInfo}>Role: Developer</p>
                 <p style={styles.memberInfo}>Experience Level: COSC484</p>
               </div>
               
               <div style={styles.teamMember}>
-                <h3 style={styles.memberName}>Name</h3>
+                <h3 style={styles.memberName}>Jae</h3>
                 <p style={styles.memberInfo}>Role: Developer</p>
                 <p style={styles.memberInfo}>Experience Level: COSC484</p>
               </div>
 
-              <div style={styles.teamMember}>
-                <h3 style={styles.memberName}>Name</h3>
-                <p style={styles.memberInfo}>Role: Developer</p>
-                <p style={styles.memberInfo}>Experience Level: COSC484</p>
-              </div>
-              
             </div>
           </div>
         </div>
