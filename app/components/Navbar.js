@@ -21,11 +21,6 @@ export default function Navbar() {
           </Link>
         </li>
         <li style={{ marginLeft: '10px' }}>
-          <Link href="/signup">
-            Sign Up
-          </Link>
-        </li>
-        <li style={{ marginLeft: '10px' }}>
           <Link href="/profile">
             Profile
           </Link>
