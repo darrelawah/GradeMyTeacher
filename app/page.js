@@ -38,6 +38,8 @@ const HomePage = () => {
               src="https://img.freepik.com/premium-vector/lineart-illustration-reading-book-black-background-also-suitable-logos_645919-119.jpg"
               alt="from freepik"
               style={styles.image}
+              width={"400"}
+              height={"400"}
             />
           </div>
         </div>
