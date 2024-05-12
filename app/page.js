@@ -36,7 +36,7 @@ const HomePage = () => {
           </div>
           {/* makes sure the picture is formatted properly*/} 
           <div style={styles.imageContainer}>
-            <Image
+            <img
               src="https://img.freepik.com/premium-vector/lineart-illustration-reading-book-black-background-also-suitable-logos_645919-119.jpg"
               alt="from freepik"
               style={styles.image}
@@ -94,7 +94,7 @@ const styles = {
 
   //makes sure our image fits properly in its container
   image: {
-    width: '100%', 
+    //width: '100%', 
     borderRadius: '5px', 
   },
 
