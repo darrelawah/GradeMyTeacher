@@ -131,7 +131,8 @@ const SignupPage = () => {
   };
 
   return (
-    <div style={styles.container}>
+    //containers to make sure formatting works as expected
+    <div className='outerContainer'>
       <div style={styles.formContainer}>
         <h1 style={styles.heading}>Signup Page</h1>
         {!registrationSuccess ? (
@@ -211,37 +212,6 @@ const styles = {
   //makes sure there is room between input fields
   inputGroup: {
     marginBottom: '20px',
-  },
-
-  //user/pass/school/etc. labels
-  label: {
-    fontSize: '1.2em',
-    display: 'block',
-    marginBottom: '5px',
-    color: '#FFFFFF',
-  },
-
-  //css for input text boxes
-  input: {
-    width: '100%',
-    padding: '10px',
-    fontSize: '1.2em',
-    borderRadius: '4px',
-    border: '1px solid #8E9297',
-    background: '#40444B',
-    color: '#FFFFFF',
-    boxSizing: 'border-box',
-  },
-
-  //css for button
-  button: {
-    fontSize: '1.2em',
-    padding: '10px 20px',
-    borderRadius: '5px',
-    backgroundColor: '#7289DA',
-    color: '#FFFFFF',
-    border: 'none',
-    cursor: 'pointer',
   },
 
   //css for "already have asn account?"

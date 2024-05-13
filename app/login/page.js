@@ -84,8 +84,8 @@ const LoginPage = () => {
         </form>
         {error && <p style={styles.error}>{error}</p>}
         <p style={styles.signupLink}>
-          Need an Account? {' '}
-          <Link href="/signup" style={styles.link}>Sign Up</Link>
+          Need an Account? {" "}
+          <Link href="/signup" className='linkerOnDark'>Sign Up</Link>
         </p>
       </div>
     </div>
@@ -130,14 +130,6 @@ const styles = {
   //css for the input areas 
   inputGroup: {
     marginBottom: '20px',
-  },
-
-  //css for User/Pass Labels
-  label: {
-    fontSize: '1.2em',
-    display: 'block',
-    marginBottom: '5px',
-    color: '#FFFFFF',
   },
 
   //css for the input text boxes

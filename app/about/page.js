@@ -3,7 +3,7 @@ import React from 'react';
 const AboutUsPage = () => {
   return (
     //contains the page and makes sure formatting works as expected
-    <div style={styles.outerContainer}>
+    <div className='outerContainer'>
       <main style={styles.main}>
         <h1 style={styles.heading}>About Us</h1>
         <div style={styles.content}>

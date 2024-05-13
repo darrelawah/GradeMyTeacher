@@ -45,7 +45,7 @@ const GradedUniversityPageContent = () => {
 
     //may add more comments later. Kinda tired today (Sorry!).
     return (
-            <div style={styles.container}>
+            <div className='outerContainer'>
                 <h1 style={styles.heading}>{gradedUniversity.universityName}</h1>
                 <h2 style={styles.subHeading}>Average Rating: {gradedUniversity.averageRating}</h2>
                 <div style={styles.reviews}>
@@ -60,7 +60,7 @@ const GradedUniversityPageContent = () => {
                 </div>
                 <div style={styles.buttonContainer}>
                     <Link href="/">
-                        <button style={styles.button}>Back to Home</button>
+                        <button >Back to Home</button>
                     </Link>
                 </div>
             </div>
