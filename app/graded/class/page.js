@@ -45,24 +45,56 @@ const GradedClassPageContent = () => {
     };
     
     return (
-        <div style={styles.container}>
-            <h1 style={styles.heading}>{gradedClass.courseName}</h1>
-            <h2 style={styles.subHeading}>University: {gradedClass.university}</h2>
-            <h2 style={styles.subHeading}>Grade: {gradedClass.grade}</h2>
-            <div style={styles.reviews}>
-                <h2 style={styles.subHeading}>Reviews:</h2>
-                {gradedClass.reviews.map((review, index) => (
-                    <div key={index} style={styles.review}>
-                        <h3>{review.profname}</h3>
-                        <p><strong>Rating:</strong> {review.rating}</p>
-                        <p><strong>Comment:</strong> {review.comment}</p>
-                    </div>
-                ))}
-            </div>
-            <div style={styles.buttonContainer}>
-                <Link href="/">
-                    <button style={styles.button}>Back to Home</button>
-                </Link>
+        <div className='outerContainer'>
+            <div className='mainContainer'>
+                <div>
+                    <h1 style={styles.heading}>{gradedClass.courseName}</h1>
+                </div>
+                <div>
+                    <h2 style={styles.subHeading}>University:
+                        <div>
+                            {gradedClass.university}
+                        </div>
+                    </h2>
+                </div>
+                <div>
+                    <h2 style={styles.subHeading}>Average Rating:
+                        <div className='ratingLetter'>
+                            {gradedClass.grade}
+                        </div>
+                    </h2>
+                </div>
+                <div style={styles.reviews}>
+                    <h2 style={styles.subHeading}>Reviews:</h2>
+                    {gradedClass.reviews.map((review, index) => (
+                        <div key={index} style={styles.review}>
+                            <div>
+                                <h3>{review.profname}</h3>
+                            </div>
+                            <div>
+                                <p>
+                                <strong>Rating:</strong>
+                                    <div className='ratingLetter'>
+                                        {review.rating}
+                                    </div>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                <strong>Comment:</strong>
+                                    <div>
+                                        {review.comment}
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <Link href="/">
+                        <button>Back to Home</button>
+                    </Link>
+                </div>
             </div>
         </div>
     );

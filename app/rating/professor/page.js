@@ -40,7 +40,7 @@ const ProfessorRatingPage = () => {
 
 
   return (
-    <div className={styles.container}>
+    <div className='outerContainer'>
       <form 
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
@@ -50,10 +50,11 @@ const ProfessorRatingPage = () => {
         <div className={styles.inputGroup}> 
           <label className={styles.label}>Course Name:</label> 
           <input 
-            className={styles.input} type="text" name="courseName" required 
+            className={styles.input} type="text" name="courseName" required
             value={course}
             onChange={e => setCourse(e.target.value)}
-          /> 
+          />
+
         </div>
 
         <div className={styles.inputGroup}> 
@@ -69,7 +70,7 @@ const ProfessorRatingPage = () => {
 
           <label className={styles.label}>Review:</label>
           <textarea 
-            className={styles.textarea} name="review" rows="4" required
+            name="review" rows="4" required
             value={review}
             onChange={e => setReview(e.target.value)}
           />
@@ -100,10 +101,10 @@ const ProfessorRatingPage = () => {
             }
           }} 
         >
-        <button className={styles.button}>Back to Professor Page</button>
+        <button>Back to Professor Page</button>
         </Link>
 
-        <button className={styles.button} type="submit">Submit Professor Grade</button>
+        <button type="submit">Submit Professor Grade</button>
       </form>
     </div>
   );

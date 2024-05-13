@@ -1,72 +1,128 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { supabase } from '@/backend/client';
 
-// dummy arrays to simulate database
-const users = [
-  {
-    username: 'JohnDoe',
-    email: 'johndoe@example.com',
-    role: 'Student/Teacher',
-    school: 'School Attending'
-  },
-];
-
-const recentGrades = [
-  {
-    teacher: 'Teacher1',
-    grade: 'grade',
-    comment: 'comment',
-  },
-  {
-    teacher: 'Teacher2',
-    grade: 'grade',
-    comment: 'comment',
-  },
-  {
-    teacher: 'Teacher3',
-    grade: 'grade',
-    comment: 'comment',
-  }
-];
 
 const ProfilePage = () => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        // Get the logged-in user's username from localStorage
+        const loggedInUser = localStorage.getItem('user');
+        if (!loggedInUser) {
+          setError('User not logged in');
+          return;
+        }
+
+        // Fetch user data from the database based on username
+        const { data, error } = await supabase
+          .from('users')
+          .select('uname, email, universityid')
+          .eq('uname', loggedInUser)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data) {
+          setError('User not found');
+          return;
+        }
+
+        // Fetch university name using the university ID
+        const universityName = await fetchUniversityName(data.universityid);
+
+        setUser({
+          username: data.uname,
+          email: data.email,
+          universityName: universityName,
+        });
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+        setError('Error fetching user data');
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const fetchUniversityName = async (universityId) => {
+    try {
+      const { data, error } = await supabase
+        .from('university')
+        .select('universityName')
+        .eq('uid', universityId)
+        .single();
+      
+      if (error) {
+        throw error;
+      }
+
+      return data ? data.universityName : null;
+    } catch (error) {
+      console.error('Error fetching university name:', error.message);
+      return null;
+    }
+  };
+
   return (
     <div className='outerContainer'>
       <div style={styles.innerContainer}>
-        {/* Profile Box */}
         <div style={styles.container}>
-          <h2 style={styles.heading}>Profile</h2>
-          <div style={styles.content}>
-            <p style={styles.welcome}>Welcome to your profile page!</p>
-            <div style={styles.userInfo}>
-              <h4 style={styles.subHeading}>User Information</h4>
-              <ul style={styles.list}>
-                {/* user information (will have to pull it from database rather than array)*/}
-                {users.map((user, index) => (
-                  <li key={index} style={styles.listItem}>
-                    <strong>Username:</strong> {user.username}<br />
-                    <strong>Email:</strong> {user.email}<br />
-                    <strong>Role:</strong> {user.role}<br />
-                    <strong>School:</strong> {user.school}
-                  </li>
-                  ))}
-              </ul>
+          <h2 style={styles.heading}>Welcome to your profile page!</h2>
+          {error && <p style={styles.error}>Error: {error}</p>}
+          {user && (
+            <div className='containerUsPr'>
+              <div style={styles.userInfo}>
+                <h4 style={styles.subHeading}>User Information</h4>
+                <div className='contentHolder'>
+                  <ul style={styles.list}>
+                    <li className='listItem'>
+                      <strong>Username: </strong>
+                      <br/>
+                      {user.username}
+                    </li>
+                    <li className='listItem'>
+                      <strong>Email: </strong>
+                      <br/>
+                      {user.email}
+                    </li>
+                    <li className='listItem'>
+                      <strong>University: </strong>
+                      <br/>
+                      {user.universityName}
+                    </li>
+                    <li className='listItem'>
+                      <strong>Role: </strong>
+                      <br/>
+                      Student
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
-
-        {/* Content Box */}
-        <div style={styles.container}>
+          {/* Grades Box */}
+          <div className='containerUsPr'>
           <h2 style={styles.heading}>Grades</h2>
-          <div style={styles.content}>
-            <h3 style={styles.largeBottomMargin}>Recent grades you have gotten/given: </h3>
+          <h3 className='h3LargeBottomMargin'>Recent grades you have gotten/given:</h3>
+          <div className='contentHolder'>
             <ul style={styles.list}>
-              {/* grading/rating information (will have to pull it from database rather than from array)*/}
-              {recentGrades.map((grade, index) => (
-                <li key={index} style={styles.listItem}>
-                  <strong>Graded {grade.teacher}:</strong> <strong>{grade.grade}</strong>, { grade.comment}
-                </li>
-              ))}
+              <li className='listItem'>
+                Graded Teacher1: grade, comment
+              </li>
+              <li className='listItem'>
+                Graded Teacher2: grade, comment
+              </li>
+              <li className='listItem'>
+                Graded Teacher3: grade, comment
+              </li>
             </ul>
           </div>
         </div>
@@ -84,30 +140,11 @@ const styles = {
     margin: '0 auto',
   },
 
-  //formatting for inbetween boxes in profile/user information
-  container: {
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '5px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-    marginBottom: '20px',
-    background: '#2C2F33',
-  },
-
   //css for profile and grades headings
   heading: {
     fontSize: '24px',
     marginBottom: '20px',
     textAlign: 'center',
-    color: '#d3d3d3',
-  },
-
-  //css for inner boxes in profile/grades (the sport where all the text is)
-  content: {
-    padding: '20px',
-    background: '#36454F',
-    borderRadius: '5px',
-    overflow: 'auto',
   },
 
   //css for the welcome line
@@ -136,16 +173,6 @@ const styles = {
     margin: '0',
   },
 
-  //css for the list items
-  listItem: {
-    display: 'block',
-    marginBottom: '10px',
-  },
-
-  //css to increase bottom margin sizes when needed
-  largeBottomMargin: {
-    marginBottom: '25px',
-  },
 };
 
 export default ProfilePage;

@@ -135,7 +135,7 @@ export default function Display(props) {
     // }
     
     return ( 
-        <div>
+        <div >
             <h2>
                 <Link className="linkerOnDark" href={{
                     pathname: "/graded/university",

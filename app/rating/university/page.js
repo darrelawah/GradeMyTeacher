@@ -39,7 +39,7 @@ const UniversityRatingPage = () => {
   //console.log(insertData)
 
   return (
-    <div className={styles.container}> 
+    <div className='outerContainer'> 
       <form 
         className={styles.form} 
         onSubmit={handleSubmit(onSubmit)}
@@ -51,10 +51,10 @@ const UniversityRatingPage = () => {
           <input className={styles.input} type="text" name="universityName" required /> 
         </div> */}
 
-        <div className={styles.inputGroup}> 
-          <label className={styles.label}>Grade:</label> 
+        <div className={styles.formGroup}> 
+          <label >Grade:</label> 
           <input 
-            className={styles.input} type="text" name="grade" required 
+            type="text" name="grade" required 
             value={grade}
             onChange={e => setGrade(e.target.value)}
           /> 
@@ -62,7 +62,7 @@ const UniversityRatingPage = () => {
 
         <div className={styles.formGroup}>
 
-          <label className={styles.label}>Review:</label>
+          <label>Review:</label>
           <textarea 
             className={styles.textarea} name="review" rows="4" required
             value={review}
@@ -76,7 +76,6 @@ const UniversityRatingPage = () => {
           {['A', 'B', 'C', 'D', 'F'].map((grade) => (
             <button
               key={grade}
-              className={styles.gradeButton}
               type="button"
             >
               {grade}
@@ -94,10 +93,10 @@ const UniversityRatingPage = () => {
             }
           }} 
         >
-        <button className={styles.button}>Back to University Page</button>
+        <button>Back to University Page</button>
         </Link>
 
-        <button className={styles.button} type="submit">Submit University Grade</button>
+        <button type="submit">Submit University Grade</button>
       </form>
     </div>
   );
