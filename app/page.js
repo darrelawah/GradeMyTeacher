@@ -14,16 +14,16 @@ const HomePage = () => {
         <div style={styles.content}>
           {/* makes sure that the text is formatted properly*/}
           <div style={styles.textContainer}>
-            <p style={styles.subheading}>Working to bring educators and students together since 2024</p>
-            <p style={styles.info}>{""}</p>
-            <p style={styles.info}>{""}</p>
-            <p style={styles.info}>{""}</p> 
+            <p style={styles.subheading}>Discover amazing features, Get quality ratings to help make informed decisions, and more!</p>
+            <p style={styles.info}>{ }</p>
+            <p style={styles.info}>{ }</p>
+            <p style={styles.info}>{ }</p> 
             
             {/* adding the text "New Grade" */}
-            <p style={styles.newGradeText}>New Grade</p>
-            
+            {/* <p style={styles.newGradeText}>New Grade</p>
+             */}
             {/* adding the buttons for professor, course, and university */}
-            <div style={styles.buttonContainer}>
+            {/* <div style={styles.buttonContainer}>
               <Link href="/rating/professor">
                 <button>Professor</button>
               </Link>
@@ -33,7 +33,7 @@ const HomePage = () => {
               <Link href="/rating/university">
                 <button>University</button>
               </Link>
-            </div>
+            </div> */}
           </div>
           {/* makes sure the picture is formatted properly*/} 
           <div style={styles.imageContainer}>
