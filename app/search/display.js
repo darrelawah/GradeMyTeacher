@@ -14,7 +14,7 @@ function useGetUniversity(uni) {
     async function getUnis(){
         const { data: university, error } = await supabase
             .from('university')
-            .select('universityName, rating')
+            .select('uid, universityName, rating')
 
         setUniversity(university)
     }
@@ -24,7 +24,8 @@ function useGetUniversity(uni) {
         if (element.universityName === uni) {
             uni = element.universityName;
             var grade = element.rating;
-            arr.push({uni, grade})
+            var uid = element.uid;
+            arr.push({uni, grade, uid})
         }
     });
 
@@ -119,21 +120,18 @@ export default function Display(props) {
     const courses = useGetCourses(props.course);
     var university
     var grade
-
-    // if (!university) {
-    //     return <div>Loading...</div>; // Add loading state if university data is not available yet
-    // }
+    var uid
 
     universities.forEach(element => {
         university = element.uni
         grade = element.grade
+        uid = element.uid
     });
 
-    // var courses
-    // if (props.prof == null) {
-    //     courses = useGetCourses(props.course);
-    // }
-    
+    if (!university) {
+        return <div>Loading...</div>; // Add loading state if university data is not available yet
+    }
+
     return ( 
         <div >
             <div>
@@ -146,7 +144,8 @@ export default function Display(props) {
                     <Link className="linkerOnDark" href={{
                         pathname: "/graded/university",
                         query: {
-                            uname: university,
+                            uid: uid,
+                        uname: university,
                             grade: grade
                         }
                     }}

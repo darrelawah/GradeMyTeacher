@@ -81,9 +81,18 @@ const GradedProfessorPageContent = () => {
                     ))}
                 </div>
                 <div>
-                    <Link href="/">
-                        <button >Back to Home</button>
-                    </Link>
+                <Link href={{
+                    pathname: "/rating/professor",
+                    query: {
+                        uni: searchParams.get("uni"),
+                        pid: searchParams.get("pid"),
+                        pname: searchParams.get("pname"),
+                        grade: searchParams.get("grade")
+                    }
+                }} 
+                >
+                    <button>Write a Review</button>
+                </Link>
                 </div>
             </div>
         </div>
