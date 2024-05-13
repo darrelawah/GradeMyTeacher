@@ -95,6 +95,7 @@ const GradedUniversityPageContent = () => {
                 </Link>
                 </div>
             </div>
+        </div>
     );
 };
 
