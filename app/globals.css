@@ -3,6 +3,7 @@
 
   --font-libBask: "Libre Baskerville", serif;
   --font-M: "Montserrat", sans-serif;
+  --font-rating: "Unkempt", cursive;
 
   --gmtBeige: #F3E3C2;
   --gmtOrange: #DC7101;
@@ -17,6 +18,18 @@
 
   --max-width: 1100px;
 }
+.unkempt-regular {
+  font-family: "Unkempt", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.unkempt-bold {
+  font-family: "Unkempt", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 * {
   box-sizing: border-box;
@@ -72,7 +85,7 @@ li {
 }
 
 .h3LargeBottomMargin{
-  color: var(--gmtBlack);
+  color: var(--gmtLightGray);
   margin-bottom: 25px;
 }
 /*css for list items*/
@@ -258,6 +271,15 @@ button {
   justify-content: center;
 }
 
+.mainContainer{
+  margin-top: 80px;
+  margin-bottom: 80px;
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+  color: var(--gmtMidnight);
+}
+
 .teamMember{
   width: calc(25% - 20px);
   margin: 0 10px 20px;
@@ -265,6 +287,13 @@ button {
 .memberName{
   font-size: 1.2em;
   margin-bottom: 5px;
+}
+
+.ratingLetter{
+  font-family: var(--font-rating);
+  font-weight: 700;
+  margin: 20px;
+  font-size: 1.2em;
 }
 /*calc(100vh - 96px)*/
 

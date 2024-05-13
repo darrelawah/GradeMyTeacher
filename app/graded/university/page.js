@@ -45,25 +45,49 @@ const GradedUniversityPageContent = () => {
 
     //may add more comments later. Kinda tired today (Sorry!).
     return (
-            <div className='outerContainer'>
-                <h1 style={styles.heading}>{gradedUniversity.universityName}</h1>
-                <h2 style={styles.subHeading}>Average Rating: {gradedUniversity.averageRating}</h2>
+        <div className='outerContainer'>
+            <div className='mainContainer'>
+                <div>
+                    <h1 style={styles.heading}>{gradedUniversity.universityName}</h1>
+                </div>
+                <div>
+                    <h2 style={styles.subHeading}>Average Rating:
+                        <div className='ratingLetter'>
+                            {gradedUniversity.averageRating}
+                        </div>
+                    </h2>
+                </div>
                 <div style={styles.reviews}>
                     <h2 style={styles.subHeading}>Reviews:</h2>
                     {gradedUniversity.reviews.map((review, index) => (
                         <div key={index} style={styles.review}>
                             {/* <h3>{review.username}</h3> */}
-                            <p><strong>Rating:</strong> {review.rating}</p>
-                            <p><strong>Comment:</strong> {review.comment}</p>
+                            <div>
+                                <p>
+                                    <strong>Rating:</strong>
+                                    <div className='ratingLetter'>
+                                        {review.rating}
+                                    </div>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>Comment:</strong>
+                                    <div>
+                                        {review.comment}
+                                    </div>
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
-                <div style={styles.buttonContainer}>
+                <div>
                     <Link href="/">
                         <button >Back to Home</button>
                     </Link>
                 </div>
             </div>
+        </div>
     );
 };
 
@@ -103,21 +127,5 @@ const styles = {
         borderRadius: '5px',
         marginBottom: '20px',
     },
-    buttonContainer: {
-        textAlign: 'center',
-        marginTop: '20px',
-    },
-    button: {
-        padding: '12px 20px',
-        fontSize: '1.2rem',
-        backgroundColor: '#7289DA',
-        border: 'none',
-        color: 'white',
-        textAlign: 'center',
-        textDecoration: 'none',
-        display: 'inline-block',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-    },
+
 };
