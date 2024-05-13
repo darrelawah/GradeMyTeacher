@@ -74,19 +74,36 @@ const ProfilePage = () => {
     <div className='outerContainer'>
       <div style={styles.innerContainer}>
         <div style={styles.container}>
-          <h2 style={styles.heading}> Profile</h2>
+          <h2 style={styles.heading}>Welcome to your profile page!</h2>
           {error && <p style={styles.error}>Error: {error}</p>}
           {user && (
-            <div className='contentHolder'>
-              <p style={styles.welcome}>Welcome to your profile page!</p>
+            <div className='containerUsPr'>
               <div style={styles.userInfo}>
                 <h4 style={styles.subHeading}>User Information</h4>
-                <ul style={styles.list}>
-                  <li className='listItem'><strong>Username:</strong> {user.username}</li>
-                  <li className='listItem'><strong>Email:</strong> {user.email}</li>
-                  <li className='listItem'><strong>University:</strong> {user.universityName}</li>
-                  <li className='listItem'><strong>Role:</strong> Student</li>
-                </ul>
+                <div className='contentHolder'>
+                  <ul style={styles.list}>
+                    <li className='listItem'>
+                      <strong>Username: </strong>
+                      <br/>
+                      {user.username}
+                    </li>
+                    <li className='listItem'>
+                      <strong>Email: </strong>
+                      <br/>
+                      {user.email}
+                    </li>
+                    <li className='listItem'>
+                      <strong>University: </strong>
+                      <br/>
+                      {user.universityName}
+                    </li>
+                    <li className='listItem'>
+                      <strong>Role: </strong>
+                      <br/>
+                      Student
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           )}
@@ -94,12 +111,18 @@ const ProfilePage = () => {
           {/* Grades Box */}
           <div className='containerUsPr'>
           <h2 style={styles.heading}>Grades</h2>
+          <h3 className='h3LargeBottomMargin'>Recent grades you have gotten/given:</h3>
           <div className='contentHolder'>
-            <h3 className='h3LargeBottomMargin'>Recent grades you have gotten/given:</h3>
             <ul style={styles.list}>
-              <li className='listItem'>Graded Teacher1: grade, comment</li>
-              <li className='listItem'>Graded Teacher2: grade, comment</li>
-              <li className='listItem'>Graded Teacher3: grade, comment</li>
+              <li className='listItem'>
+                Graded Teacher1: grade, comment
+              </li>
+              <li className='listItem'>
+                Graded Teacher2: grade, comment
+              </li>
+              <li className='listItem'>
+                Graded Teacher3: grade, comment
+              </li>
             </ul>
           </div>
         </div>
