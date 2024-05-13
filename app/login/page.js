@@ -62,9 +62,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className='outerContainer'>
       <div style={styles.formContainer}>
-        <h1 style={styles.heading}>Login Page</h1>
+        <h1 className='twoemHeading'>Login</h1>
         {user && (
           <div style={styles.userInfo}>
             <p>Welcome, {user}</p>
@@ -73,14 +73,14 @@ const LoginPage = () => {
         )}
         <form style={styles.form} onSubmit={handleSubmit}>
           <div style={styles.inputGroup}>
-            <label htmlFor="uname" style={styles.label}>Username:</label>
-            <input type="text" id="uname" name="uname" required aria-label="Username" style={styles.input} onChange={handleInputChange} />
+            <label htmlFor="uname">Username:</label>
+            <input type="text" id="uname" name="uname" required aria-label="Username" onChange={handleInputChange} />
           </div>
           <div style={styles.inputGroup}>
-            <label htmlFor="pw" style={styles.label}>Password:</label>
-            <input type="password" id="pw" name="pw" required aria-label="Password" style={styles.input} onChange={handleInputChange} />
+            <label htmlFor="pw">Password:</label>
+            <input type="password" id="pw" name="pw" required aria-label="Password" onChange={handleInputChange} />
           </div>
-          <button type="submit" style={styles.button}>Login</button>
+          <button type="submit" >Login</button>
         </form>
         {error && <p style={styles.error}>{error}</p>}
         <p style={styles.signupLink}>
@@ -111,13 +111,6 @@ const styles = {
     padding: '40px',
     borderRadius: '8px',
     boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)',
-  },
-
-  //css for heading (login page)
-  heading: {
-    fontSize: '2em',
-    marginBottom: '30px',
-    color: '#FFFFFF',
   },
 
   //css for the form

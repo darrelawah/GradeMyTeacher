@@ -71,7 +71,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div style={styles.outerContainer}>
+    <div className='outerContainer'>
       <div style={styles.innerContainer}>
         <div style={styles.container}>
           <h2 style={styles.heading}> Profile</h2>
@@ -110,10 +110,6 @@ const ProfilePage = () => {
 
 // CSS styles
 const styles = {
-  outerContainer: {
-    background: '#202124',
-    paddingTop: '20px',
-  },
 
   //formatting for outer boxes of the profile/grades sections 
   innerContainer: {
@@ -136,7 +132,6 @@ const styles = {
     fontSize: '24px',
     marginBottom: '20px',
     textAlign: 'center',
-    color: '#d3d3d3',
   },
 
   //css for inner boxes in profile/grades (the sport where all the text is)

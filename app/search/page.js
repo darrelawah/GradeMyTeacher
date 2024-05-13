@@ -14,7 +14,7 @@ export default function Search() {
         <div className='outerContainer'>
             <br/>
             <form>
-                <label>Choose your university </label>
+                <label className='twoemHeading'>Choose your university</label>
                 <input
                     value={university}
                     required

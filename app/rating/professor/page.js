@@ -49,14 +49,14 @@ const ProfessorRatingPage = () => {
 
 
   return (
-    <div className={styles.container}>
+    <div className='outerContainer'>
       <form className={styles.form}>
         <h1 className={styles.title}>Professor Grade</h1>
         <div className={styles.inputGroup}>
 
           <label className={styles.label}>Professor Name:</label>
           <input 
-            className={styles.input} type="text" name="professorName" required
+            type="text" name="professorName" required
             value={prof}
             onChange={e => setProf(e.target.value)}
           />
@@ -65,14 +65,14 @@ const ProfessorRatingPage = () => {
 
         <div className={styles.inputGroup}> {/* Apply inputGroup class */}
           <label className={styles.label}>Course Name:</label> {/* Apply label class */}
-          <input className={styles.input} type="text" name="courseName" required /> {/* Apply input class */}
+          <input type="text" name="courseName" required /> {/* Apply input class */}
         </div>
 
         <div className={styles.inputGroup}>
 
           <label className={styles.label}>Review:</label>
           <textarea 
-            className={styles.textarea} name="review" rows="4" required
+            name="review" rows="4" required
             value={review}
             onChange={e => setReview(e.target.value)}
           />
@@ -93,7 +93,7 @@ const ProfessorRatingPage = () => {
 
         {/* will take you to the graded professor page on submit*/}
         <Link href='/graded/professor'>
-        <button className={styles.button} type="submit">Submit Professor Grade</button>
+        <button type="submit">Submit Professor Grade</button>
         </Link>
       </form>
     </div>

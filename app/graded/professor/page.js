@@ -57,7 +57,7 @@ const GradedProfessorPageContent = () => {
             </div>
             <div style={styles.buttonContainer}>
                 <Link href="/">
-                    <button style={styles.button}>Back to Home</button>
+                    <button >Back to Home</button>
                 </Link>
             </div>
         </div>
@@ -104,17 +104,17 @@ const styles = {
         textAlign: 'center',
         marginTop: '20px',
     },
-    button: {
-        padding: '12px 20px',
-        fontSize: '1.2rem',
-        backgroundColor: '#7289DA',
-        border: 'none',
-        color: 'white',
-        textAlign: 'center',
-        textDecoration: 'none',
-        display: 'inline-block',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-    },
+    // button: {
+    //     padding: '12px 20px',
+    //     fontSize: '1.2rem',
+    //     backgroundColor: '#7289DA',
+    //     border: 'none',
+    //     color: 'white',
+    //     textAlign: 'center',
+    //     textDecoration: 'none',
+    //     display: 'inline-block',
+    //     borderRadius: '8px',
+    //     cursor: 'pointer',
+    //     transition: 'background-color 0.3s ease',
+    // },
 };

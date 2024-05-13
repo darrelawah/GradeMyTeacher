@@ -4,15 +4,15 @@ import styles from "../../rating/rating.module.css";
 
 const UniversityRatingPage = () => {
   return (
-    <div className={styles.container}> {/* Apply container class */}
+    <div className='outerContainer'> {/* Apply container class */}
       <form className={styles.form}> {/* Apply form class */}
         <h1 className={styles.title}>University Grade</h1> {/* Apply title class */}
         <div className={styles.formGroup}> {/* Apply formGroup class */}
-          <label className={styles.label}>University Name:</label> {/* Apply label class */}
-          <input className={styles.input} type="text" name="universityName" required /> {/* Apply input class */}
+          <label>University Name:</label> {/* Apply label class */}
+          <input type="text" name="universityName" required /> {/* Apply input class */}
         </div>
         <div className={styles.formGroup}>
-          <label className={styles.label}>Review:</label>
+          <label>Review:</label>
           <textarea className={styles.textarea} name="review" rows="4" required></textarea> {/* Apply textarea class */}
         </div>
          {/* Circular buttons for grade selection */}
@@ -20,7 +20,6 @@ const UniversityRatingPage = () => {
           {['A', 'B', 'C', 'D', 'F'].map((grade) => (
             <button
               key={grade}
-              className={styles.gradeButton}
               type="button"
             >
               {grade}
@@ -30,7 +29,7 @@ const UniversityRatingPage = () => {
         
         {/* will take you to the university graded page after you submit*/}
         <Link href='/graded/university'>
-        <button className={styles.button} type="submit">Submit University Grade</button> {/* Apply button class */}
+        <button type="submit">Submit University Grade</button> {/* Apply button class */}
         </Link>
       </form>
     </div>

@@ -62,13 +62,6 @@ const AboutUsPage = () => {
 
 // CSS styles
 const styles = {
-  outerContainer: {
-    background: '#202124', 
-    minHeight: 'calc(100vh - 96px)', 
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   main: {
     textAlign: 'center',
     color: '#FFFFFF', 
