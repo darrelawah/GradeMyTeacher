@@ -8,8 +8,8 @@ import "./globals.css";
 const HomePage = () => {
   return (
     //formatting for the overall page
-    <div style={styles.outerContainer}>
-      <main style={styles.main}>
+    <div className='outerContainer'>
+      <main className='homePageMain'>
         <h1 style={styles.heading}>Welcome to Grade My Teacher!</h1>
         <div style={styles.content}>
           {/* makes sure that the text is formatted properly*/}
@@ -50,23 +50,6 @@ const HomePage = () => {
 
 // CSS styles
 const styles = {
-  outerContainer: {
-    background: '#202124', // Dark grey background
-    minHeight: 'calc(100vh - 96px)', // Adjust for footer height
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-  },
-
-  //helps with our formatting for the main page
-  main: {
-    textAlign: 'center',
-    color: '#FFFFFF',
-    width: '90%',
-    maxWidth: '1200px',
-    padding: '0 20px',
-  },
 
   //heading css
   heading: {
