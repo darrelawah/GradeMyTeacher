@@ -6,7 +6,7 @@ const SignupPage = () => {
     //containers to make sure formatting works as expected
     <div style={styles.container}>
       <div style={styles.formContainer}>
-        <h1 style={styles.heading}>Signup Page</h1>
+        <h1 style={styles.heading}>Signup</h1>
         <form style={styles.form}>
           {/* username input */}
           <div style={styles.inputGroup}>
@@ -41,7 +41,7 @@ const SignupPage = () => {
         </form>
         <p style={styles.loginLink}>
           Already have an account?{' '}
-          <Link href="/login" style={styles.link}>Login</Link>
+          <Link href="/login" className='linkerOnDark'>Login</Link>
         </p>
       </div>
     </div>
@@ -55,7 +55,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: 'calc(100vh - 96px)',
-    marginTop: '-1in',
     background: '#202124',
   },
 
@@ -72,7 +71,6 @@ const styles = {
   heading: {
     fontSize: '2em',
     marginBottom: '30px',
-    color: '#FFFFFF',
   },
 
   //css for the form
@@ -92,7 +90,6 @@ const styles = {
     fontSize: '1.2em',
     display: 'block',
     marginBottom: '5px',
-    color: '#FFFFFF',
   },
 
   //css for input text boxes
@@ -103,19 +100,7 @@ const styles = {
     borderRadius: '4px',
     border: '1px solid #8E9297',
     background: '#40444B',
-    color: '#FFFFFF',
     boxSizing: 'border-box',
-  },
-
-  //css for button
-  button: {
-    fontSize: '1.2em',
-    padding: '10px 20px',
-    borderRadius: '5px',
-    backgroundColor: '#7289DA',
-    color: '#FFFFFF',
-    border: 'none',
-    cursor: 'pointer',
   },
 
   //css for "already have asn account?"
