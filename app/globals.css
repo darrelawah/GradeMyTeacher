@@ -12,6 +12,8 @@
   --gmtDarkGray: #989DA7;
   --gmtBlack: #000000;
   --gmtWhite: #FFFFFF;
+  --gmtMidnight: #202124;
+
 
   --max-width: 1100px;
 }
@@ -20,7 +22,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 html,
@@ -46,9 +48,15 @@ li {
 .font-M{
   --font-M: "Montserrat", sans-serif;
 }
+form{
+
+}
 h1, h2, h3, h4, h5 {
   font-family: var(--font-libBask);
   color: var(--gmtLightGray);
+}
+h1{
+  font-size: xx-large;
 }
 li {
   font-family: var(--font-M);
@@ -90,7 +98,7 @@ button:hover {
 
 button {
   background-Color: var(--gmtLightGray);
-  color: #202124;
+  color: var(--gmtDarkBlue);
   border: 5px var(--gmtLightGray);
   font-family: var(--font-M);
   padding: 12px 16px;
@@ -122,6 +130,7 @@ button {
   background-color: var(--gmtBeige);
   display: flex;
   justify-content: flex-end;
+  border-radius: 0;
 }
 .footer {
   position: fixed;
@@ -132,6 +141,7 @@ button {
   color: var(--gmtBlack);
   text-align: center;
   padding: 10px 100px;
+  border-radius: 0;
 }
 /* footer text modification */
 .footerText{
@@ -154,7 +164,7 @@ button {
 
 /* background: '#202124', Dark grey background */
 .outerContainer{
-  background-color: #202124;
+  background-color: var(--gmtMidnight);
   /* adjusting for footer height */
   min-height: 100vh;
   display: flex;
@@ -162,3 +172,8 @@ button {
   justify-content: center;
 }
 /*calc(100vh - 96px)*/
+
+/* experimental */
+/* @media (prefers-color-scheme: dark) {
+  insert classes as normal here 
+} */

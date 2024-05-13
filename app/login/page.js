@@ -10,13 +10,13 @@ const LoginPage = () => {
         <form style={styles.form}>
           {/* username input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="username" style={styles.label}>Username:</label>
-            <input type="text" id="username" name="username" required aria-label="Username" style={styles.input} />
+            <label htmlFor="username">Username:</label>
+            <input type="text" id="username" name="username" required aria-label="Username"/>
           </div>
           {/* password input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="password" style={styles.label}>Password:</label>
-            <input type="password" id="password" name="password" required aria-label="Password" style={styles.input} />
+            <label htmlFor="password">Password:</label>
+            <input type="password" id="password" name="password" required aria-label="Password"/>
           </div>
           {/* submit button (will take you to profile on submit) */}
           <Link href='/profile'>
@@ -60,14 +60,6 @@ const styles = {
   //css for the input areas 
   inputGroup: {
     marginBottom: '20px',
-  },
-
-  //css for User/Pass Labels
-  label: {
-    fontSize: '1.2em',
-    display: 'block',
-    marginBottom: '5px',
-    color: '#FFFFFF',
   },
 
   //css for the input text boxes

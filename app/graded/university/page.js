@@ -60,7 +60,7 @@ const GradedUniversityPageContent = () => {
                 </div>
                 <div style={styles.buttonContainer}>
                     <Link href="/">
-                        <button style={styles.button}>Back to Home</button>
+                        <button >Back to Home</button>
                     </Link>
                 </div>
             </div>
