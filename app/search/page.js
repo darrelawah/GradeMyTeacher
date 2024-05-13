@@ -12,7 +12,6 @@ export default function Search() {
 
     return (
         <div className='outerContainer'>
-            <br/>
             <div className='formContainer'>
                 <form>
                     <label className='twoemHeading'>Choose your university</label>
@@ -24,22 +23,26 @@ export default function Search() {
                     <br/>
                     <br/>
                     <label>Search by: </label>
-                    <input
-                        type="radio"
-                        name="search"
-                        value="Course"
-                        onChange={e => setType(e.target.value)}
-                    />
-                    <label> Course </label>
-                    <input
-                        type="radio"
-                        name="search"
-                        value="Professor"
-                        onChange={e => setType(e.target.value)}
-                    />
-                    <label> Professor </label>
-                    <br/>
-                    <br/>
+                    <div className='searchcont'>
+                            <div className='searchlabel'>
+                                <label> Course </label>
+                                <input
+                                    type="radio"
+                                    name="search"
+                                    value="Course"
+                                    onChange={e => setType(e.target.value)}
+                                />
+                            </div>
+                            <div className='searchlabel'>
+                            <label> Professor </label>
+                                <input
+                                    type="radio"
+                                    name="search"
+                                    value="Professor"
+                                    onChange={e => setType(e.target.value)}
+                                />
+                            </div>
+                    </div>
                     {searchType === "Course" ?
                         <>
                         <label>Enter class name: </label>
@@ -61,8 +64,6 @@ export default function Search() {
                             value={prof}
                             onChange={e => setProf(e.target.value)}
                         />
-                        <br/>
-                        <br/>
                         <div>
                             <Display prof={prof} uni={university} />
                         </div>
