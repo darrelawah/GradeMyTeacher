@@ -2,10 +2,13 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from "../../rating/rating.module.css";
-// import { supabase } from "@/backend/client";
+import { supabase } from "@/backend/client";
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 const ProfessorRatingPage = () => {
+  const searchParams = useSearchParams();
+
   const [prof, setProf] = useState('');
   const [review, setReview] = useState('');
   const [professors, setProfessors] = useState([]);
@@ -92,7 +95,16 @@ const ProfessorRatingPage = () => {
         </div>
 
         {/* will take you to the graded professor page on submit*/}
-        <Link href='/graded/professor'>
+        <Link href={{
+            pathname: "/graded/professor",
+            query: {
+                uni: searchParams.get("uni"),
+                pid: searchParams.get("pid"),
+                pname: searchParams.get("pname"),
+                grade: searchParams.get("grade")
+            }
+          }} 
+        >
         <button className={styles.button} type="submit">Submit Professor Grade</button>
         </Link>
       </form>
