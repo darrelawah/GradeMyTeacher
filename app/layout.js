@@ -28,9 +28,6 @@ export default function RootLayout({ children }) {
       <body>
       <Navbar/>
         <div>
-          <h1>
-            GradeMyTeacher
-          </h1>
         </div>
         <div>
         </div>
