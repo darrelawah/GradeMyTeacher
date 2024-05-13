@@ -14,10 +14,10 @@ const HomePage = () => {
         <div style={styles.content}>
           {/* makes sure that the text is formatted properly*/}
           <div style={styles.textContainer}>
-            <p style={styles.subheading}>Discover amazing features, Get quality ratings to help make informed decisions, and more!</p>
-            <p style={styles.info}>some info here or something</p>
-            <p style={styles.info}>some infor here or something</p>
-            <p style={styles.info}>IDK maybe we have more info? who knows</p> 
+            <p style={styles.subheading}>Working to bring educators and students together since 2024</p>
+            <p style={styles.info}>{""}</p>
+            <p style={styles.info}>{""}</p>
+            <p style={styles.info}>{""}</p> 
             
             {/* adding the text "New Grade" */}
             <p style={styles.newGradeText}>New Grade</p>
