@@ -2,10 +2,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { supabase } from "@/backend/client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 
-function getReviews(uname) {
+function useGetReviews(uname) {
     const [review, setReviews] = useState([]);
 
     useEffect(() => {
@@ -32,9 +32,9 @@ function getReviews(uname) {
     return arr;
 }
 
-const GradedUniversityPage = () => {
+const GradedUniversityPageContent = () => {
     const searchParams = useSearchParams();
-    const reviewarr = getReviews(searchParams.get("uname"));
+    const reviewarr = useGetReviews(searchParams.get("uname"));
 
     // Dummy data for now. We will pull this data from the backend. 
     const gradedUniversity = {
@@ -45,27 +45,37 @@ const GradedUniversityPage = () => {
 
     //may add more comments later. Kinda tired today (Sorry!).
     return (
-        <div style={styles.container}>
-            <h1 style={styles.heading}>{gradedUniversity.universityName}</h1>
-            <h2 style={styles.subHeading}>Average Rating: {gradedUniversity.averageRating}</h2>
-            <div style={styles.reviews}>
-                <h2 style={styles.subHeading}>Reviews:</h2>
-                {gradedUniversity.reviews.map((review, index) => (
-                    <div key={index} style={styles.review}>
-                        {/* <h3>{review.username}</h3> */}
-                        <p><strong>Rating:</strong> {review.rating}</p>
-                        <p><strong>Comment:</strong> {review.comment}</p>
-                    </div>
-                ))}
+            <div style={styles.container}>
+                <h1 style={styles.heading}>{gradedUniversity.universityName}</h1>
+                <h2 style={styles.subHeading}>Average Rating: {gradedUniversity.averageRating}</h2>
+                <div style={styles.reviews}>
+                    <h2 style={styles.subHeading}>Reviews:</h2>
+                    {gradedUniversity.reviews.map((review, index) => (
+                        <div key={index} style={styles.review}>
+                            {/* <h3>{review.username}</h3> */}
+                            <p><strong>Rating:</strong> {review.rating}</p>
+                            <p><strong>Comment:</strong> {review.comment}</p>
+                        </div>
+                    ))}
+                </div>
+                <div style={styles.buttonContainer}>
+                    <Link href="/">
+                        <button style={styles.button}>Back to Home</button>
+                    </Link>
+                </div>
             </div>
-            <div style={styles.buttonContainer}>
-                <Link href="/">
-                    <button style={styles.button}>Back to Home</button>
-                </Link>
-            </div>
-        </div>
     );
 };
+
+const GradedUniversityPage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GradedUniversityPageContent />
+        </Suspense>
+    );
+};
+
+export default GradedUniversityPage;
 
 // CSS styles
 const styles = {
@@ -111,5 +121,3 @@ const styles = {
         transition: 'background-color 0.3s ease',
     },
 };
-
-export default GradedUniversityPage;

@@ -97,8 +97,6 @@ const styles = {
     fontSize: '1.2em',
     padding: '10px 20px',
     borderRadius: '5px',
-    backgroundColor: '#7289DA',
-    color: '#FFFFFF',
     border: 'none',
     cursor: 'pointer',
   },
