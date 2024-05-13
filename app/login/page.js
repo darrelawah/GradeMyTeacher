@@ -1,29 +1,88 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { supabase } from '@/backend/client';
 
 const LoginPage = () => {
+  const [formData, setFormData] = useState({ uname: '', pw: '' });
+  const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
+
+  // Check if the user is logged in when the component mounts
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { uname, pw } = formData;
+
+    try {
+      // Fetch user data from the database
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('uname', uname)
+        .single();
+
+      if (error) throw error;
+
+      if (!data) {
+        setError('User not found');
+        return;
+      }
+
+      if (data.pw !== pw) {
+        setError('Incorrect password');
+        return;
+      }
+
+      // User authentication successful
+      setUser(data.uname); // Set the logged-in user's username
+      localStorage.setItem('user', data.uname); // Store user's session information
+
+    } catch (error) {
+      console.error('Error logging in:', error.message);
+      setError('Error logging in');
+    }
+  };
+
+  const handleLogout = () => {
+    // Clear user session information
+    localStorage.removeItem('user');
+    setUser(null); // Clear the logged-in user
+  };
+
   return (
-    //container makes sure formatting works as expected
-    <div className='outerContainer'>
+    <div style={styles.container}>
       <div style={styles.formContainer}>
-        <h1 style={styles.heading}>Login</h1>
-        <form style={styles.form}>
-          {/* username input */}
-          <div style={styles.inputGroup}>
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" name="username" required aria-label="Username"/>
+        <h1 style={styles.heading}>Login Page</h1>
+        {user && (
+          <div style={styles.userInfo}>
+            <p>Welcome, {user}</p>
+            <button onClick={handleLogout} style={styles.logoutButton}>Logout</button>
           </div>
-          {/* password input */}
+        )}
+        <form style={styles.form} onSubmit={handleSubmit}>
           <div style={styles.inputGroup}>
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" required aria-label="Password"/>
+            <label htmlFor="uname" style={styles.label}>Username:</label>
+            <input type="text" id="uname" name="uname" required aria-label="Username" style={styles.input} onChange={handleInputChange} />
           </div>
-          {/* submit button (will take you to profile on submit) */}
-          <Link href='/profile'>
-            <button type="submit" style={styles.button}>Login</button>
-          </Link>
-        {/* takes you to signup page if you need an account */}
+          <div style={styles.inputGroup}>
+            <label htmlFor="pw" style={styles.label}>Password:</label>
+            <input type="password" id="pw" name="pw" required aria-label="Password" style={styles.input} onChange={handleInputChange} />
+          </div>
+          <button type="submit" style={styles.button}>Login</button>
         </form>
+        {error && <p style={styles.error}>{error}</p>}
         <p style={styles.signupLink}>
           Need an Account? {" "}
           <Link href="/signup" className='linkerOnDark'>Sign Up</Link>
@@ -33,7 +92,17 @@ const LoginPage = () => {
   );
 };
 
+
 const styles = {
+  //css for the outside area around the login page box
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 'calc(100vh - 96px)',
+    marginTop: '-1in',
+    background: '#202124',
+  },
 
   //css for the box that contains the login page and its fields
   formContainer: {
@@ -48,6 +117,7 @@ const styles = {
   heading: {
     fontSize: '2em',
     marginBottom: '30px',
+    color: '#FFFFFF',
   },
 
   //css for the form
@@ -79,6 +149,8 @@ const styles = {
     fontSize: '1.2em',
     padding: '10px 20px',
     borderRadius: '5px',
+    backgroundColor: '#7289DA',
+    color: '#FFFFFF',
     border: 'none',
     cursor: 'pointer',
   },
@@ -94,6 +166,17 @@ const styles = {
   link: {
     textDecoration: 'underline',
     color: '#7289DA',
+  },
+
+  //css for logout button
+  logoutButton: {
+    fontSize: '1.2em',
+    padding: '3px 6px',
+    borderRadius: '5px',
+    backgroundColor: '#E91E63', // Change color to match your design
+    color: '#FFFFFF',
+    border: 'none',
+    cursor: 'pointer',
   },
 };
 
