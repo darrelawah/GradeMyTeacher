@@ -4,9 +4,9 @@ import Link from 'next/link';
 const LoginPage = () => {
   return (
     //container makes sure formatting works as expected
-    <div style={styles.container}>
+    <div className='outerContainer'>
       <div style={styles.formContainer}>
-        <h1 style={styles.heading}>Login Page</h1>
+        <h1 style={styles.heading}>Login</h1>
         <form style={styles.form}>
           {/* username input */}
           <div style={styles.inputGroup}>
@@ -34,15 +34,6 @@ const LoginPage = () => {
 };
 
 const styles = {
-  //css for the outside area around the login page box
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 'calc(100vh - 96px)',
-    marginTop: '-1in',
-    background: '#202124',
-  },
 
   //css for the box that contains the login page and its fields
   formContainer: {
@@ -57,7 +48,6 @@ const styles = {
   heading: {
     fontSize: '2em',
     marginBottom: '30px',
-    color: '#FFFFFF',
   },
 
   //css for the form

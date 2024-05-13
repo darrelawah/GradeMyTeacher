@@ -11,7 +11,7 @@ export default function Search() {
     const [prof, setProf] = useState('');
 
     return (
-        <div>
+        <div className='outerContainer'>
             <br/>
             <form>
                 <label>Choose your university </label>
