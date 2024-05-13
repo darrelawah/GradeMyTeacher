@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import mainLogoSq from './Assets/New Project.svg'
 import "./globals.css";
 
 
@@ -36,9 +37,9 @@ const HomePage = () => {
           </div>
           {/* makes sure the picture is formatted properly*/} 
           <div style={styles.imageContainer}>
-            <img
-              src="https://img.freepik.com/premium-vector/lineart-illustration-reading-book-black-background-also-suitable-logos_645919-119.jpg"
-              alt="from freepik"
+            <Image
+              src={mainLogoSq}
+              alt="Grade My Teacher Square Logo"
               style={styles.image}
               width={"400"}
               height={"400"}
@@ -116,7 +117,7 @@ const styles = {
   newGradeText: {
     fontSize: '1.5em',
     marginBottom: '20px',
-    color: '#7289DA',
+    color: '#DEDDEE',
     marginTop: '20px', // Add margin-top to create a line break
   },
 
@@ -128,11 +129,8 @@ const styles = {
 
   //css for the buttons
   button: {
-    backgroundColor: '#7289DA',
-    color: '#FFFFFF',
     padding: '12px 16px',
     fontSize: '1.2em',
-    border: 'none',
     cursor: 'pointer',
     marginRight: '10px', // Adjust spacing between buttons
   },
