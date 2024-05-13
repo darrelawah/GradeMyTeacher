@@ -1,21 +1,8 @@
-import { Libre_Baskerville, Montserrat } from "next/font/google";
 import "./globals.css";
 
 //components
 import Navbar from "./components/Navbar";
 import FooterBar from "./components/FooterBar";
-
-// const headerFontLB = Libre_Baskerville({ 
-//   subsets: ["latin"],
-//   weight: ['400'],
-//   variable: '--font-libBask',
-// });
-
-// const bodyFontM = Montserrat({
-//   subsets: ["latin"],
-//   weight: ['400'],
-//   variable: '--font-M',
-// });
 
 export const metadata = {
   title: "Grade My Teacher",
@@ -32,10 +19,8 @@ export default function RootLayout({ children }) {
         <div>
         </div>
       {children}
-      <FooterBar/>
       </body>
+      <FooterBar/>
     </html>
   );
 }
-
-//className={`${bodyFontM.className} ${headerFontLB.className}`}

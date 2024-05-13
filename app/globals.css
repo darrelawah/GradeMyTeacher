@@ -140,7 +140,60 @@ li {
 }
 h1, h2, h3, h4, h5 {
   font-family: var(--font-libBask);
+  color: var(--gmtLightGray);
 }
-p, li {
+li, label {
   font-family: var(--font-M);
+}
+
+p {
+  font-family: var(--font-M);
+  color: var(--gmtLightGray);
+}
+
+button:hover {
+  background-color: var(--gmtOrange);
+  color: var(--gmtWhite);
+  padding: 12px 16px;
+  font-size: 1.2em;
+  border: 3px var(--gmtDarkBlue);
+  border-radius: 12px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button {
+  background-Color: var(--gmtLightGray);
+  color: var(--gmtBlack);
+  border: 3px var(--gmtLightGray);
+  border-radius: 1px;
+  font-family: var(--font-M);
+  padding: 12px 16px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.linker {
+  font-size: 1.5em;
+  color: var(--gmtBlue);
+}
+.linker:visited {
+  color: var(--gmtOrange);
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--gmtBeige);
+  color: var(--gmtBlack);
+  text-align: center;
+  padding: 10px 100px;
+}
+
+.imageMain{
+  border-radius: 5px;
+  width: 540;
+  height: auto;
 }

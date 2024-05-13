@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import eyeCatch from './Assets/desola-lanre-ologun-IgUR1iX0mqM-unsplash.jpg'
 import "./globals.css";
 
 
@@ -24,24 +25,21 @@ const HomePage = () => {
             {/* adding the buttons for professor, course, and university */}
             <div style={styles.buttonContainer}>
               <Link href="/rating/professor">
-                <button style={styles.button}>Professor</button>
+                <button>Professor</button>
               </Link>
               <Link href="/rating/course">
-                <button style={styles.button}>Course</button>
+                <button>Course</button>
               </Link>
               <Link href="/rating/university">
-                <button style={styles.button}>University</button>
+                <button>University</button>
               </Link>
             </div>
           </div>
           {/* makes sure the picture is formatted properly*/} 
           <div style={styles.imageContainer}>
-            <img
-              src="https://img.freepik.com/premium-vector/lineart-illustration-reading-book-black-background-also-suitable-logos_645919-119.jpg"
-              alt="from freepik"
-              style={styles.image}
-              width={"400"}
-              height={"400"}
+            <Image className='imageMain'
+              src={eyeCatch}
+              alt="woman and man sitting in front of monitor credit: Desola Lanre-Ologun via Unsplash"
             />
           </div>
         </div>
@@ -94,12 +92,6 @@ const styles = {
     width: '45%', // 45% of the content width
   },
 
-  //makes sure our image fits properly in its container
-  image: {
-    //width: '100%', 
-    borderRadius: '5px', 
-  },
-
   //css for subheading
   subheading: {
     fontSize: '1.5em',
@@ -116,7 +108,7 @@ const styles = {
   newGradeText: {
     fontSize: '1.5em',
     marginBottom: '20px',
-    color: '#7289DA',
+    color: '#DEDDEE',
     marginTop: '20px', // Add margin-top to create a line break
   },
 
@@ -124,17 +116,6 @@ const styles = {
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
-  },
-
-  //css for the buttons
-  button: {
-    backgroundColor: '#7289DA',
-    color: '#FFFFFF',
-    padding: '12px 16px',
-    fontSize: '1.2em',
-    border: 'none',
-    cursor: 'pointer',
-    marginRight: '10px', // Adjust spacing between buttons
   },
 
 };
