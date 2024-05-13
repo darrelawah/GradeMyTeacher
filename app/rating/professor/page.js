@@ -21,7 +21,7 @@ const ProfessorRatingPage = () => {
     profid: pid, classname: course, rating: grade, reviewtext: review
   }]
 
-  console.log(insertData)
+  //console.log(insertData)
 
   const onSubmit = async (formData) => {
     await insertReview(formData);
@@ -59,7 +59,7 @@ const ProfessorRatingPage = () => {
         <div className={styles.inputGroup}> 
           <label className={styles.label}>Grade:</label> 
           <input 
-            className={styles.input} type="text" name="courseName" required 
+            className={styles.input} type="text" name="grade" required 
             value={grade}
             onChange={e => setGrade(e.target.value)}
           /> 

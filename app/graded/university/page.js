@@ -59,9 +59,17 @@ const GradedUniversityPageContent = () => {
                     ))}
                 </div>
                 <div style={styles.buttonContainer}>
-                    <Link href="/">
-                        <button style={styles.button}>Back to Home</button>
-                    </Link>
+                <Link href={{
+                    pathname: "/rating/university",
+                    query: {
+                        uid: searchParams.get("uid"),
+                        uname: searchParams.get("uname"),
+                        grade: searchParams.get("grade")
+                    }
+                }} 
+                >
+                    <button style={styles.button}>Write a Review</button>
+                </Link>
                 </div>
             </div>
     );
