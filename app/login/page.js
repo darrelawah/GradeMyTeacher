@@ -63,7 +63,7 @@ const LoginPage = () => {
 
   return (
     <div className='outerContainer'>
-      <div style={styles.formContainer}>
+      <div className='formContainer'>
         <h1 className='twoemHeading'>Login</h1>
         {user && (
           <div style={styles.userInfo}>
@@ -102,22 +102,6 @@ const styles = {
     minHeight: 'calc(100vh - 96px)',
     marginTop: '-1in',
     background: '#202124',
-  },
-
-  //css for the box that contains the login page and its fields
-  formContainer: {
-    textAlign: 'center',
-    background: '#2C2F33',
-    padding: '40px',
-    borderRadius: '8px',
-    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)',
-  },
-
-  //css for the form
-  form: {
-    width: '400px',
-    textAlign: 'center',
-    marginBottom: '20px',
   },
 
   //css for the input areas 
