@@ -191,6 +191,9 @@ button {
   text-align: center;
   padding: 10px 100px;
 }
+.footerText{
+  color: var(--gmtBlack);
+}
 
 .imageMain{
   border-radius: 5px;
