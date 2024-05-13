@@ -72,7 +72,9 @@ form{
   background-color: var(--gmtMidnight);
   padding: 40px;
   box-shadow: 0px 0px 7px var(--gmtDarkGray);
-  border: 1px solid var(--gmtDarkGray)
+  border: 1px solid var(--gmtDarkGray);
+  margin-bottom: 80px;
+  margin-top: 80px;
 }
 /* rgba(0, 0, 0, 0.3) */
 h1, h2, h3, h4, h5 {
@@ -278,6 +280,16 @@ button {
   padding: 20px;
   text-align: center;
   color: var(--gmtMidnight);
+}
+
+.searchcont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchlabel{
+  margin: 20px;
 }
 
 .teamMember{

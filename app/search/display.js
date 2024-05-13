@@ -89,21 +89,28 @@ function Professors(props) {
     return (
         <div>
             <br/>
-            <p>Professor:
-                <Link className="linkerOnDark" href={{
-                    pathname: "/graded/professor",
-                    query: {
-                        uni: props.uni,
-                        pid: profid,
-                        pname: name,
-                        grade: grade
-                    }
-                }}
-                rel="noopener noreferrer" target="_blank"
-                > {name}</Link>
+            <p>
+            <h2>Professor:</h2>
+                <div>
+                    <h4>
+                        <Link className="linkerOnDark" href={{
+                            pathname: "/graded/professor",
+                            query: {
+                                uni: props.uni,
+                                pid: profid,
+                                pname: name,
+                                grade: grade
+                            }
+                        }}
+                        rel="noopener noreferrer" target="_blank"
+                        >{name}</Link>
+                    </h4>
+                </div>
             </p>
-            <p>Grade: {grade}</p>
-            <br></br>
+            <label>
+                Grade:
+                <div className="ratingLetter">{grade}</div>
+            </label>
         </div>
     )
 }
@@ -136,48 +143,62 @@ export default function Display(props) {
     
     return ( 
         <div >
-            <h2>
-                <Link className="linkerOnDark" href={{
-                    pathname: "/graded/university",
-                    query: {
-                        uid: uid,
+            <div>
+            <div>
+                <h2>
+                    University:
+                </h2>
+            </div>
+                <h4>
+                    <Link className="linkerOnDark" href={{
+                        pathname: "/graded/university",
+                        query: {
+                            uid: uid,
                         uname: university,
-                        grade: grade
-                    }
-                }}
-                rel="noopener noreferrer" target="_blank"
-                >{university}</Link>
-            </h2>
+                            grade: grade
+                        }
+                    }}
+                    rel="noopener noreferrer" target="_blank"
+                    >{university}
+                    </Link>
+                </h4>
+            </div>
             <br/>
-            { props.prof == null ?
-            <>
-                <div>
-                    {courses.slice(0, 1).map((c, index) => (
-                        <h1 key={index}>
-                            <Link href={{
-                                pathname: "/graded/class",
-                                query: {
-                                    uni: university,
-                                    cname: c.course,
-                                    grade: c.grade
-                                }
-                            }}
-                            rel="noopener noreferrer" target="_blank"
-                            >{c.course}</Link>
-                        </h1>
-                    ))}
-                </div>
-                <br/>
-                <br></br>
-                <div>
-                    {courses.map(c => (
-                        <Professors key={c.pid} pid={c.pid} uni={university}/>
-                    ))}
-                </div>
-            </>
-            :
-            <>
-            </>}
+            <div>
+                { props.prof == null ?
+                <>
+                    <div>
+                        {courses.slice(0, 1).map((c, index) => (
+                            <h2 key={index}>
+                                <div>
+                                <div>
+                                    Course:
+                                </div>
+                                    <Link className="linkerOnDark" href={{
+                                        pathname: "/graded/class",
+                                        query: {
+                                            uni: university,
+                                            cname: c.course,
+                                            grade: c.grade
+                                        }
+                                    }}
+                                    rel="noopener noreferrer" target="_blank"
+                                    >{c.course}</Link>
+                                </div>
+                            </h2>
+                        ))}
+                    </div>
+
+                    <div>
+                        {courses.map(c => (
+                            <Professors key={c.pid} pid={c.pid} uni={university}/>
+                        ))}
+                    </div>
+                </>
+                :
+                <>
+                </>}
+            </div>
             { props.course == null ?
             <>
                 <div>
