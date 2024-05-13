@@ -191,9 +191,9 @@ button {
 }
 .header {
   position: fixed;
-  left: 0;
+  right: 0;
   top: 0;
-  width: 100;
+  width: 100%;
   background-color: var(--gmtBeige);
   display: flex;
   justify-content: flex-end;
