@@ -122,10 +122,6 @@ export default function Display(props) {
     var grade
     var uid
 
-    // if (!university) {
-    //     return <div>Loading...</div>; // Add loading state if university data is not available yet
-    // }
-
     universities.forEach(element => {
         university = element.uni
         grade = element.grade
@@ -136,11 +132,6 @@ export default function Display(props) {
         return <div>Loading...</div>; // Add loading state if university data is not available yet
     }
 
-    // var courses
-    // if (props.prof == null) {
-    //     courses = useGetCourses(props.course);
-    // }
-    
     return ( 
         <div >
             <div>

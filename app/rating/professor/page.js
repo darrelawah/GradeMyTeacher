@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import styles from "../../rating/rating.module.css";
 import { supabase } from "@/backend/client";
@@ -21,24 +21,17 @@ const ProfessorRatingPage = () => {
     profid: pid, classname: course, rating: grade, reviewtext: review
   }]
 
-  //console.log(insertData)
-
   const onSubmit = async (formData) => {
     await insertReview(formData);
   };
 
   async function insertReview(e){
-    //e.preventDefault()
 
     const { data, error } = await supabase
       .from('reviews')
       .insert(insertData)
       .select()
   }
-
-
-
-
   return (
     <div className='outerContainer'>
       <form 
@@ -76,38 +69,31 @@ const ProfessorRatingPage = () => {
           />
 
         </div>
-
-        {/* Circular buttons for grade selection */}
-        {/* <div className={styles.gradeSelection}>
-          {['A', 'B', 'C', 'D', 'F'].map((grade) => (
-            <button
-              key={grade}
-              className={styles.gradeButton}
-              type="button"
+        <div>
+          <div>
+            <Link href={{
+                pathname: "/graded/professor",
+                query: {
+                    uni: searchParams.get("uni"),
+                    pid: searchParams.get("pid"),
+                    pname: searchParams.get("pname"),
+                    grade: searchParams.get("grade")
+                }
+              }}
             >
-              {grade}
-            </button>
-          ))}
-        </div> */}
-
-        {/* will take you to the graded professor page on submit*/}
-        <Link href={{
-            pathname: "/graded/professor",
-            query: {
-                uni: searchParams.get("uni"),
-                pid: searchParams.get("pid"),
-                pname: searchParams.get("pname"),
-                grade: searchParams.get("grade")
-            }
-          }} 
-        >
-        <button>Back to Professor Page</button>
-        </Link>
-
-        <button type="submit">Submit Professor Grade</button>
+            <button className='multibutton'>Back to Professor Page</button>
+            </Link>
+          </div>
+          <div><button className='multibutton' type="submit">Submit Professor Grade</button></div>
+        </div>
       </form>
     </div>
   );
 };
+const ProfessorRatingPageWithParams = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <ProfessorRatingPage />
+  </Suspense>
+);
 
-export default ProfessorRatingPage;
+export default ProfessorRatingPageWithParams;
