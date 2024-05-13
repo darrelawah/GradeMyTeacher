@@ -77,29 +77,29 @@ const ProfilePage = () => {
           <h2 style={styles.heading}> Profile</h2>
           {error && <p style={styles.error}>Error: {error}</p>}
           {user && (
-            <div style={styles.content}>
+            <div className='contentHolder'>
               <p style={styles.welcome}>Welcome to your profile page!</p>
               <div style={styles.userInfo}>
                 <h4 style={styles.subHeading}>User Information</h4>
                 <ul style={styles.list}>
-                  <li style={styles.listItem}><strong>Username:</strong> {user.username}</li>
-                  <li style={styles.listItem}><strong>Email:</strong> {user.email}</li>
-                  <li style={styles.listItem}><strong>University:</strong> {user.universityName}</li>
-                  <li style={styles.listItem}><strong>Role:</strong> Student</li>
+                  <li className='listItem'><strong>Username:</strong> {user.username}</li>
+                  <li className='listItem'><strong>Email:</strong> {user.email}</li>
+                  <li className='listItem'><strong>University:</strong> {user.universityName}</li>
+                  <li className='listItem'><strong>Role:</strong> Student</li>
                 </ul>
               </div>
             </div>
           )}
         </div>
-                {/* Grades Box */}
-                <div style={styles.container}>
+          {/* Grades Box */}
+          <div className='containerUsPr'>
           <h2 style={styles.heading}>Grades</h2>
-          <div style={styles.content}>
-            <h3 style={styles.largeBottomMargin}>Recent grades you have gotten/given:</h3>
+          <div className='contentHolder'>
+            <h3 className='h3LargeBottomMargin'>Recent grades you have gotten/given:</h3>
             <ul style={styles.list}>
-              <li style={styles.listItem}>Graded Teacher1: grade, comment</li>
-              <li style={styles.listItem}>Graded Teacher2: grade, comment</li>
-              <li style={styles.listItem}>Graded Teacher3: grade, comment</li>
+              <li className='listItem'>Graded Teacher1: grade, comment</li>
+              <li className='listItem'>Graded Teacher2: grade, comment</li>
+              <li className='listItem'>Graded Teacher3: grade, comment</li>
             </ul>
           </div>
         </div>
@@ -117,29 +117,11 @@ const styles = {
     margin: '0 auto',
   },
 
-  //formatting for inbetween boxes in profile/user information
-  container: {
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '5px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-    marginBottom: '20px',
-    background: '#2C2F33',
-  },
-
   //css for profile and grades headings
   heading: {
     fontSize: '24px',
     marginBottom: '20px',
     textAlign: 'center',
-  },
-
-  //css for inner boxes in profile/grades (the sport where all the text is)
-  content: {
-    padding: '20px',
-    background: '#36454F',
-    borderRadius: '5px',
-    overflow: 'auto',
   },
 
   //css for the welcome line
@@ -168,16 +150,6 @@ const styles = {
     margin: '0',
   },
 
-  //css for the list items
-  listItem: {
-    display: 'block',
-    marginBottom: '10px',
-  },
-
-  //css to increase bottom margin sizes when needed
-  largeBottomMargin: {
-    marginBottom: '25px',
-  },
 };
 
 export default ProfilePage;

@@ -136,26 +136,26 @@ const SignupPage = () => {
       <div style={styles.formContainer}>
         <h1 style={styles.heading}>Signup Page</h1>
         {!registrationSuccess ? (
-          <form style={styles.form} onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div style={styles.inputGroup}>
-              <label htmlFor="uname" style={styles.label}>Username:</label>
-              <input type="text" id="uname" name="uname" style={styles.input} onChange={handleInputChange} required />
+              <label htmlFor="uname">Username:</label>
+              <input type="text" id="uname" name="uname" onChange={handleInputChange} required />
             </div>
             <div style={styles.inputGroup}>
-              <label htmlFor="email" style={styles.label}>Email:</label>
-              <input type="email" id="email" name="email" style={styles.input} onChange={handleInputChange} required />
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" onChange={handleInputChange} required />
             </div>
             <div style={styles.inputGroup}>
-              <label htmlFor="university" style={styles.label}>University:</label>
-              <input type="text" id="university" name="university" style={styles.input} onChange={handleInputChange} required />
+              <label htmlFor="university">University:</label>
+              <input type="text" id="university" name="university" onChange={handleInputChange} required />
             </div>
             <div style={styles.inputGroup}>
-              <label htmlFor="pw" style={styles.label}>Password:</label>
-              <input type="password" id="pw" name="pw" style={styles.input} onChange={handleInputChange} required />
+              <label htmlFor="pw">Password:</label>
+              <input type="password" id="pw" name="pw" onChange={handleInputChange} required />
             </div>
             <div style={styles.inputGroup}>
-              <label htmlFor="pwConfirm" style={styles.label}>Confirm Password:</label>
-              <input type="password" id="pwConfirm" name="pwConfirm" style={styles.input} onChange={handleInputChange} required />
+              <label htmlFor="pwConfirm">Confirm Password:</label>
+              <input type="password" id="pwConfirm" name="pwConfirm" onChange={handleInputChange} required />
             </div>
             <button type="submit" style={styles.button}>Signup</button>
           </form>
@@ -167,7 +167,7 @@ const SignupPage = () => {
         )}
         <p style={styles.loginLink}>
           Already have an account?{' '}
-          <Link href="/login" style={styles.link}>Login</Link>
+          <Link href="/login" className='linkerOnDark'>Login</Link>
         </p>
       </div>
     </div>
@@ -202,13 +202,6 @@ const styles = {
     color: '#FFFFFF',
   },
 
-  //css for the form
-  form: {
-    width: '400px',
-    textAlign: 'center',
-    marginBottom: '20px',
-  },
-
   //makes sure there is room between input fields
   inputGroup: {
     marginBottom: '20px',
@@ -221,11 +214,6 @@ const styles = {
     color: '#FFFFFF',
   },
 
-  //css for "Login" link
-  link: {
-    textDecoration: 'underline',
-    color: '#7289DA',
-  },
 };
 
 export default SignupPage;
