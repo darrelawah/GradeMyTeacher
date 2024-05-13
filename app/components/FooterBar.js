@@ -8,10 +8,10 @@ export default function FooterBar() {
         left: 0,
         bottom: 0,
         width: '100%',
-        backgroundColor: '#050066',
-        color: '#DEDDEE',
+        backgroundColor: '#F3E3C2',
+        color: '#000000',
         textAlign: 'center',
-        padding: '10px 0'
+        padding: '10px 100px'
       }}>
         <p>
           We are in no way associated with Rate My Professors as an entity or business rival. This site is a university project made by a collaborative effort on part on the students in our About section during the spring semester of 2024.
