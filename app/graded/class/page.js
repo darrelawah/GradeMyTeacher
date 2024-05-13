@@ -45,7 +45,7 @@ const GradedClassPageContent = () => {
     };
     
     return (
-        <div style={styles.container}>
+        <div className='outerContainer'>
             <h1 style={styles.heading}>{gradedClass.courseName}</h1>
             <h2 style={styles.subHeading}>University: {gradedClass.university}</h2>
             <h2 style={styles.subHeading}>Grade: {gradedClass.grade}</h2>

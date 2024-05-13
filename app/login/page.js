@@ -26,7 +26,7 @@ const LoginPage = () => {
         </form>
         <p style={styles.signupLink}>
           Need an Account? {" "}
-          <Link href="/signup" style={styles.link}>Sign Up</Link>
+          <Link href="/signup" className='linkerOnDark'>Sign Up</Link>
         </p>
       </div>
     </div>

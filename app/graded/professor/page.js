@@ -40,7 +40,7 @@ const GradedProfessorPageContent = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div className='outerContainer'>
             <h1 style={styles.heading}>{gradedProfessor.professorName}</h1>
             <h2 style={styles.subHeading}>University: {gradedProfessor.university}</h2>
             <h2 style={styles.subHeading}>Average Rating: {gradedProfessor.averageRating}</h2>

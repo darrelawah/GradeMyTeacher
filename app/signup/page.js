@@ -4,34 +4,34 @@ import Link from 'next/link';
 const SignupPage = () => {
   return (
     //containers to make sure formatting works as expected
-    <div style={styles.container}>
+    <div className='outerContainer'>
       <div style={styles.formContainer}>
         <h1 style={styles.heading}>Signup</h1>
         <form style={styles.form}>
           {/* username input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="username" style={styles.label}>Username:</label>
-            <input type="text" id="username" name="username" style={styles.input} required />
+            <label htmlFor="username">Username:</label>
+            <input type="text" id="username" name="username" required />
           </div>
           {/* email input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="email" style={styles.label}>Email:</label>
-            <input type="email" id="email" name="email" style={styles.input} required />
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" required />
           </div>
           {/* school input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="school" style={styles.label}>School:</label>
-            <input type="text" id="school" name="school" style={styles.input} required />
+            <label htmlFor="school">School:</label>
+            <input type="text" id="school" name="school" required />
           </div>
           {/* password input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="password" style={styles.label}>Password:</label>
-            <input type="password" id="password" name="password" style={styles.input} required />
+            <label htmlFor="password">Password:</label>
+            <input type="password" id="password" name="password" required />
           </div>
           {/* confirm password input */}
           <div style={styles.inputGroup}>
-            <label htmlFor="password_confirm" style={styles.label}>Confirm Password:</label>
-            <input type="password" id="password_confirm" name="password_confirm" style={styles.input} required />
+            <label htmlFor="password_confirm">Confirm Password:</label>
+            <input type="password" id="password_confirm" name="password_confirm" required />
           </div>
           {/* submit button takes you to login page once account is created (will add a popup that says "account successfully created")) */}
           <Link href="/login">
@@ -49,15 +49,6 @@ const SignupPage = () => {
 };
 
 const styles = {
-  ////css for the outside area around the login page box
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 'calc(100vh - 96px)',
-    background: '#202124',
-  },
-
   //css for container of signup page
   formContainer: {
     textAlign: 'center',
@@ -83,24 +74,6 @@ const styles = {
   //makes sure there is room between input fields
   inputGroup: {
     marginBottom: '20px',
-  },
-
-  //user/pass/school/etc. labels
-  label: {
-    fontSize: '1.2em',
-    display: 'block',
-    marginBottom: '5px',
-  },
-
-  //css for input text boxes
-  input: {
-    width: '100%',
-    padding: '10px',
-    fontSize: '1.2em',
-    borderRadius: '4px',
-    border: '1px solid #8E9297',
-    background: '#40444B',
-    boxSizing: 'border-box',
   },
 
   //css for "already have asn account?"
