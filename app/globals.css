@@ -189,6 +189,15 @@ button {
   color: var(--gmtOrange);
   text-decoration: underline;
 }
+.header {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background-color: var(--gmtBeige);
+  display: flex;
+  justify-content: flex-end;
+}
 .footer {
   position: fixed;
   left: 0;

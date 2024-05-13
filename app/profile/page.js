@@ -31,7 +31,7 @@ const recentGrades = [
 
 const ProfilePage = () => {
   return (
-    <div style={styles.outerContainer}>
+    <div className='outerContainer'>
       <div style={styles.innerContainer}>
         {/* Profile Box */}
         <div style={styles.container}>
@@ -77,10 +77,6 @@ const ProfilePage = () => {
 
 // CSS styles
 const styles = {
-  outerContainer: {
-    background: '#202124',
-    paddingTop: '20px',
-  },
 
   //formatting for outer boxes of the profile/grades sections 
   innerContainer: {
