@@ -1,9 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import logomain from '../Assets/main_logo_banner.png'
 
 export default function Navbar() {
   return (
-    <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <nav style={{ display: 'flex', justifyContent: 'flex-end', backgroundColor: '#F3E3C2' }}>
+    <div style={{ marginRight: 'auto' }}>
+        <Link href="/">
+          <Image src={logomain} alt="Logo" width={355} height={52} />
+        </Link>
+      </div>
       <ul style={{ display: 'flex', listStyle: 'none', margin: 0, padding: 0 }}>
         <li style={{ marginLeft: '10px' }}>
           <Link href="/">
@@ -18,11 +25,6 @@ export default function Navbar() {
         <li style={{ marginLeft: '10px' }}>
           <Link href="/login">
             Login
-          </Link>
-        </li>
-        <li style={{ marginLeft: '10px' }}>
-          <Link href="/signup">
-            Sign Up
           </Link>
         </li>
         <li style={{ marginLeft: '10px' }}>
