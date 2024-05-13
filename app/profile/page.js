@@ -1,72 +1,105 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { supabase } from '@/backend/client';
 
-// dummy arrays to simulate database
-const users = [
-  {
-    username: 'JohnDoe',
-    email: 'johndoe@example.com',
-    role: 'Student/Teacher',
-    school: 'School Attending'
-  },
-];
-
-const recentGrades = [
-  {
-    teacher: 'Teacher1',
-    grade: 'grade',
-    comment: 'comment',
-  },
-  {
-    teacher: 'Teacher2',
-    grade: 'grade',
-    comment: 'comment',
-  },
-  {
-    teacher: 'Teacher3',
-    grade: 'grade',
-    comment: 'comment',
-  }
-];
 
 const ProfilePage = () => {
-  return (
-    <div className='outerContainer'>
-      <div style={styles.innerContainer}>
-        {/* Profile Box */}
-        <div style={styles.container}>
-          <h2 style={styles.heading}>Profile</h2>
-          <div style={styles.content}>
-            <p style={styles.welcome}>Welcome to your profile page!</p>
-            <div style={styles.userInfo}>
-              <h4 style={styles.subHeading}>User Information</h4>
-              <ul style={styles.list}>
-                {/* user information (will have to pull it from database rather than array)*/}
-                {users.map((user, index) => (
-                  <li key={index} style={styles.listItem}>
-                    <strong>Username:</strong> {user.username}<br />
-                    <strong>Email:</strong> {user.email}<br />
-                    <strong>Role:</strong> {user.role}<br />
-                    <strong>School:</strong> {user.school}
-                  </li>
-                  ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
-        {/* Content Box */}
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        // Get the logged-in user's username from localStorage
+        const loggedInUser = localStorage.getItem('user');
+        if (!loggedInUser) {
+          setError('User not logged in');
+          return;
+        }
+
+        // Fetch user data from the database based on username
+        const { data, error } = await supabase
+          .from('users')
+          .select('uname, email, universityid')
+          .eq('uname', loggedInUser)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data) {
+          setError('User not found');
+          return;
+        }
+
+        // Fetch university name using the university ID
+        const universityName = await fetchUniversityName(data.universityid);
+
+        setUser({
+          username: data.uname,
+          email: data.email,
+          universityName: universityName,
+        });
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+        setError('Error fetching user data');
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const fetchUniversityName = async (universityId) => {
+    try {
+      const { data, error } = await supabase
+        .from('university')
+        .select('universityName')
+        .eq('uid', universityId)
+        .single();
+      
+      if (error) {
+        throw error;
+      }
+
+      return data ? data.universityName : null;
+    } catch (error) {
+      console.error('Error fetching university name:', error.message);
+      return null;
+    }
+  };
+
+  return (
+    <div style={styles.outerContainer}>
+      <div style={styles.innerContainer}>
         <div style={styles.container}>
+          <h2 style={styles.heading}> Profile</h2>
+          {error && <p style={styles.error}>Error: {error}</p>}
+          {user && (
+            <div style={styles.content}>
+              <p style={styles.welcome}>Welcome to your profile page!</p>
+              <div style={styles.userInfo}>
+                <h4 style={styles.subHeading}>User Information</h4>
+                <ul style={styles.list}>
+                  <li style={styles.listItem}><strong>Username:</strong> {user.username}</li>
+                  <li style={styles.listItem}><strong>Email:</strong> {user.email}</li>
+                  <li style={styles.listItem}><strong>University:</strong> {user.universityName}</li>
+                  <li style={styles.listItem}><strong>Role:</strong> Student</li>
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+                {/* Grades Box */}
+                <div style={styles.container}>
           <h2 style={styles.heading}>Grades</h2>
           <div style={styles.content}>
-            <h3 style={styles.largeBottomMargin}>Recent grades you have gotten/given: </h3>
+            <h3 style={styles.largeBottomMargin}>Recent grades you have gotten/given:</h3>
             <ul style={styles.list}>
-              {/* grading/rating information (will have to pull it from database rather than from array)*/}
-              {recentGrades.map((grade, index) => (
-                <li key={index} style={styles.listItem}>
-                  <strong>Graded {grade.teacher}:</strong> <strong>{grade.grade}</strong>, { grade.comment}
-                </li>
-              ))}
+              <li style={styles.listItem}>Graded Teacher1: grade, comment</li>
+              <li style={styles.listItem}>Graded Teacher2: grade, comment</li>
+              <li style={styles.listItem}>Graded Teacher3: grade, comment</li>
             </ul>
           </div>
         </div>
@@ -77,6 +110,10 @@ const ProfilePage = () => {
 
 // CSS styles
 const styles = {
+  outerContainer: {
+    background: '#202124',
+    paddingTop: '20px',
+  },
 
   //formatting for outer boxes of the profile/grades sections 
   innerContainer: {
